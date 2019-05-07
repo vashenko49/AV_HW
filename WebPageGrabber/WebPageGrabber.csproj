@@ -38,8 +38,8 @@
     <Reference Include="Gu.Wpf.UiAutomation, Version=0.2.8.0, Culture=neutral, PublicKeyToken=14cccbf48e03496d, processorArchitecture=MSIL">
       <HintPath>..\packages\Gu.Wpf.UiAutomation.0.2.8.0\lib\net45\Gu.Wpf.UiAutomation.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlAgilityPack, Version=1.11.3.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\packages\HtmlAgilityPack.1.11.3\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.11.4.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.4\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
