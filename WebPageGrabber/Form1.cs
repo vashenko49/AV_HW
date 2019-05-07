@@ -98,17 +98,6 @@ namespace WebPageGrabber
         {
 
         }
-
-        delegate void UpdateReceiveDisplayDelegate(string message);
-        public void ShowReceiveMessage(string message)
-        {
-
-        }
-
-        private void ChangeBackColor(object sender, EventArgs e)
-        {
-
-        }
         delegate void BackColorFormDelegate(Color color);
         public void ChangeBackColor(Color color)
         {
@@ -126,6 +115,10 @@ namespace WebPageGrabber
                 this.BackColor = color;
             }
         }
+
+
+
+
         private string GetURLWEBPAGE()
         {
             var root = AutomationElement.RootElement.FindFirst(TreeScope.Children, new PropertyCondition(AutomationElement.ClassNameProperty, "Chrome_WidgetWin_1"));
