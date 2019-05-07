@@ -126,10 +126,17 @@ namespace WebPageGrabber
                 this.BackColor = color;
             }
         }
-       
+        private string GetURLWEBPAGE()
+        {
+            var root = AutomationElement.RootElement.FindFirst(TreeScope.Children, new PropertyCondition(AutomationElement.ClassNameProperty, "Chrome_WidgetWin_1"));
+            var textP = root.FindFirst(TreeScope.Descendants, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Edit));
+            var vpi = textP.GetCurrentPropertyValue(ValuePatternIdentifiers.ValueProperty).ToString();
+            return vpi;
+        }
         private void button_get_URL_Click(object sender, EventArgs e)
         {
-
+            get_url = GetURLWEBPAGE();
+            textBox1.Text = get_url;
         }
     }
 }
