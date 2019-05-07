@@ -112,7 +112,19 @@ namespace WebPageGrabber
         delegate void BackColorFormDelegate(Color color);
         public void ChangeBackColor(Color color)
         {
+            if (this.InvokeRequired == true)
+            {
+                BackColorFormDelegate bcf = new BackColorFormDelegate(ChangeBackColor);
 
+                // Данный метод вызывается в дочернем потоке,
+                // ищет основной поток и выполняет делегат указанный в качестве параметра 
+                // в главном потоке, безопасно обновляя интерфейс формы.
+                Invoke(bcf, new object[] { color });
+            }
+            else
+            {
+                this.BackColor = color;
+            }
         }
        
         private void button_get_URL_Click(object sender, EventArgs e)
