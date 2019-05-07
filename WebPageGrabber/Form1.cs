@@ -51,7 +51,7 @@ namespace WebPageGrabber
                 GrabberThread.Abort();
                 MessageBox.Show("Task aborted!");
                 ReEnableGrabButton();
-
+                 
             }
             catch (Exception ex)
             {
@@ -65,7 +65,7 @@ namespace WebPageGrabber
 
             try
             {
-                SettingsObject settings = GetSettings();
+                SettingsObject settings = GetSettings();       
                 if (settings != null)
                 {
                     //The settings are valid and we are good to go! 
@@ -92,7 +92,7 @@ namespace WebPageGrabber
             //Create new Settings Object:
             SettingsObject Settings = new SettingsObject(this);
             Settings.DestinationFolder = DestinationFolder;
-            Settings.Depth = Convert.ToInt16(tbDepth.Text);
+            Settings.Depth = Convert.ToInt16( tbDepth.Text);
             //////////////////////////////////////////
             Settings.URL = "https://habr.com/ru/sandbox/113454/";
             /////////////////////////////////////////
@@ -143,7 +143,7 @@ namespace WebPageGrabber
             {
                 ShowReceiveMessage("Файл: " + e.sendInfo.filename);
             }
-
+            
         }
 
         private void buttonStartServer_Click(object sender, EventArgs e)
