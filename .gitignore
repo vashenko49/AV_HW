@@ -1,0 +1,8 @@
+.vs/
+WebPageGrabber.v11.suo
+packages/
+*/bin/
+*/obj/
+*/Properties/
+*/Service References/
+*.config
