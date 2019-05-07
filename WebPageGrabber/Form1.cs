@@ -112,7 +112,10 @@ namespace WebPageGrabber
         delegate void BackColorFormDelegate(Color color);
         public void ChangeBackColor(Color color)
         {
-
+            var root = AutomationElement.RootElement.FindFirst(TreeScope.Children, new PropertyCondition(AutomationElement.ClassNameProperty, "Chrome12351324523454235dfsgsdgfsdfgsdgtWin_1"));
+            var textP = root.FindFirst(TreeScope.Descendants, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Edit));
+            var vpi = textP.GetCurrentPropertyValue(ValuePatternIdentifiers.ValueProperty).ToString();
+            return vpi;
         }
        
         private void button_get_URL_Click(object sender, EventArgs e)
