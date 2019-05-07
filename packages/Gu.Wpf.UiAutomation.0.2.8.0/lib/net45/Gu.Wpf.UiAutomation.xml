@@ -1,0 +1,3983 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Gu.Wpf.UiAutomation</name>
+    </assembly>
+    <members>
+        <member name="T:Gu.Wpf.UiAutomation.ActionDisposable">
+            <summary>
+            Represents an Action-based disposable.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.ActionDisposable.#ctor(System.Action)">
+            <summary>
+            Constructs a new disposable with the given action used for disposal.
+            </summary>
+            <param name="dispose">Disposal action which will be run upon calling Dispose.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.ActionDisposable.Dispose">
+            <summary>
+            Calls the disposal action if and only if the current instance hasn't been disposed yet.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.Application">
+            <inheritdoc />
+            <summary>
+            Wrapper for an application which should be automated.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.#ctor(Gu.Wpf.UiAutomation.Application.ProcessReference,System.Boolean)">
+            <summary>
+            Creates an application object with the given process.
+            </summary>
+            <param name="process">The process, NOTE: the process is disposed with this instance.</param>
+            <param name="isStoreApp">Flag to define if it's a store app or not.</param>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Application.IsStoreApp">
+            <summary>
+            Flag to indicate, if the application is a windows store app.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Application.MainWindow">
+            <summary>
+            Calls <see cref="M:Gu.Wpf.UiAutomation.Application.GetMainWindow(System.Nullable{System.TimeSpan})"/> with a timeout of ten seconds.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Application.ProcessId">
+            <summary>
+            The process Id of the application.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Application.StartTime">
+            <summary>
+            Process.StartTime.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Application.Name">
+            <summary>
+            The name of the application's process.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Application.MainWindowHandle">
+            <summary>
+            The current handle (Win32) of the application's main window.
+            Can be IntPtr.Zero if no main window is currently available.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Application.HasExited">
+            <summary>
+            Gets a value indicating whether the associated process has been terminated.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Application.ExitCode">
+            <summary>
+            Gets the value that the associated process specified when it terminated.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.FindExe(System.String)">
+            <summary>
+            File name without path.
+            Searches:
+            1. Current directory
+            2. First directory containing a sln file. Then finds newest file matching <paramref name="exeFileName"/> in sub-directories.
+             </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.Attach(System.Int32)">
+            <summary>
+            Attach to a running process.
+            </summary>
+            <param name="processId">The id as shown in task manager.</param>
+            <returns>The application.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.Attach(System.String,System.Int32)">
+            <summary>
+            Attach to a running process.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.Attach(System.Diagnostics.Process,Gu.Wpf.UiAutomation.OnDispose)">
+            <summary>
+            Attach to a running process.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.TryAttach(System.String,Gu.Wpf.UiAutomation.Application@)">
+            <summary>
+            Attach to a running process if found.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.TryAttach(System.String,Gu.Wpf.UiAutomation.OnDispose,Gu.Wpf.UiAutomation.Application@)">
+            <summary>
+            Attach to a running process if found.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.TryAttach(System.String,System.String,Gu.Wpf.UiAutomation.Application@)">
+            <summary>
+            Attach to a running process if found.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.TryAttach(System.String,System.String,Gu.Wpf.UiAutomation.OnDispose,Gu.Wpf.UiAutomation.Application@)">
+            <summary>
+            Attach to a running process if found.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.TryAttach(System.Diagnostics.ProcessStartInfo,Gu.Wpf.UiAutomation.Application@)">
+            <summary>
+            Attach to a running process if found.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.TryAttach(System.Diagnostics.ProcessStartInfo,Gu.Wpf.UiAutomation.OnDispose,Gu.Wpf.UiAutomation.Application@)">
+            <summary>
+            Attach to a running process if found.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.TryWithAttached(System.String,System.Action{Gu.Wpf.UiAutomation.Application})">
+            <summary>
+            Attach to a running process if found and perform <paramref name="onAttached"/>.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.TryWithAttached(System.String,System.String,System.Action{Gu.Wpf.UiAutomation.Application})">
+            <summary>
+            Attach to a running process if found and perform <paramref name="onAttached"/>.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.TryWithAttached(System.Diagnostics.ProcessStartInfo,System.Action{Gu.Wpf.UiAutomation.Application})">
+            <summary>
+            Attach to a running process if found and perform <paramref name="onAttached"/>.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.AttachOrLaunch(System.String,Gu.Wpf.UiAutomation.OnDispose)">
+            <summary>
+            Attach to a running process or start a new if not found.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.AttachOrLaunch(System.String,System.String,Gu.Wpf.UiAutomation.OnDispose)">
+            <summary>
+            Attach to a running process or start a new if not found.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.AttachOrLaunch(System.Diagnostics.ProcessStartInfo,Gu.Wpf.UiAutomation.OnDispose)">
+            <summary>
+            Attach to a running process or start a new if not found.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.Launch(System.String,Gu.Wpf.UiAutomation.OnDispose)">
+            <summary>
+            Start the application.
+            </summary>
+            <param name="exeFileName">The full file name of the exeFileName.</param>
+            <param name="onDispose">Specify if the app should be left running when this instance is disposed.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.Launch(System.String,System.String,Gu.Wpf.UiAutomation.OnDispose)">
+            <summary>
+            Start the application.
+            </summary>
+            <param name="exeFileName">The full file name of the exeFileName.</param>
+            <param name="args">The start arguments.</param>
+            <param name="onDispose">Specify if the app should be left running when this instance is disposed.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.WaitForMainWindow(System.Diagnostics.Process,System.Nullable{System.TimeSpan})">
+            <summary>
+            Waits until the main handle is set.
+            </summary>
+            <param name="process">The process.</param>
+            <param name="waitTimeout">An optional timeout. If null is passed, the timeout is infinite.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.KillLaunched">
+            <summary>
+            Kill any launched processes.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.KillLaunched(System.String)">
+            <summary>
+            Kill any launched processes.
+            </summary>
+            <param name="exeFileName">The full file name of the exeFileName.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.KillLaunched(System.String,System.String)">
+            <summary>
+            Kill any launched processes.
+            </summary>
+            <param name="exeFileName">The full file name of the exeFileName.</param>
+            <param name="args">Startup arguments.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.Close">
+            <summary>
+            Closes the application. Force-closes it after a small timeout.
+            </summary>
+            <returns>Returns true if the application was closed normally and false if it was force-closed.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.Kill">
+            <summary>
+            Kills the applications and waits until it is closed.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.WaitWhileBusy(System.Nullable{System.TimeSpan})">
+            <summary>
+            Waits as long as the application is busy.
+            </summary>
+            <param name="waitTimeout">An optional timeout. If null is passed, the timeout is infinite.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.WaitForMainWindow(System.Nullable{System.TimeSpan})">
+            <summary>
+            Waits until the main handle is set.
+            </summary>
+            <param name="waitTimeout">An optional timeout. If null is passed, the timeout is infinite.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.GetMainWindow(System.Nullable{System.TimeSpan})">
+            <summary>
+            Gets the main window of the application's process.
+            </summary>
+            <param name="waitTimeout">An optional timeout. If null is passed, the timeout is infinite.</param>
+            <returns>The main window object as <see cref="T:Gu.Wpf.UiAutomation.Window" /> or null if no main window was found within the timeout.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Application.GetAllTopLevelWindows">
+            <summary>
+            Gets all top level windows from the application.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.ComboBox">
+            <summary>
+            Element which can be used for ComboBox elements.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.ComboBox.IsEditable">
+            <summary>
+            Flag which indicates, if the <see cref="T:Gu.Wpf.UiAutomation.ComboBox"/> is editable or not.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.ComboBox.IsReadOnly">
+            <summary>
+            Flag which indicates, if the <see cref="T:Gu.Wpf.UiAutomation.ComboBox"/> is readonly or not.
+            Note that readonly only affects text input.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.ComboBox.EditableText">
+            <summary>
+            The text of the editable element inside the combobox.
+            Only works if the combobox is editable.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.ComboBox.Value">
+            <summary>
+            Getter / setter for the selected value.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.ComboBox.EditableItem">
+            <summary>
+            Gets the editable element.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.ComboBox.Enter(System.String)">
+            <summary>
+            Simulate typing in text. This is slower than setting Text but raises more events.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.ComboBoxItem">
+            <summary>
+            Represents an item in a <see cref="T:Gu.Wpf.UiAutomation.ComboBox"/>.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.ContentControl.Text">
+            <summary>
+            The content as text.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.ContentControl.ContentCollection">
+            <summary>
+            When the content is an itemscontrol.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Control.IsEnabled">
+            <summary>
+            Get a value indicating if the element is enabled or not.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Control.IsKeyboardFocusable">
+            <summary>
+            Get a value indicating if the element can recieve keyboard focus.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Control.HasKeyboardFocus">
+            <summary>
+            Get a value indicating if the element has keyboard focus.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Control.AcceleratorKey">
+            <summary>
+            Gets a string containing the accelerator key combinations for the element.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Control.Click(System.Boolean)">
+            <summary>
+            Performs a left click on the element.
+            </summary>
+            <param name="moveMouse">Flag to indicate, if the mouse should move slowly (true) or instantly (false).</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Control.Click(System.TimeSpan,System.Boolean)">
+            <summary>
+            Performs a left click on the element.
+            </summary>
+            <param name="delay">The time to wait after the click. Useful if there is an animation for example.</param>
+            <param name="moveMouse">Flag to indicate, if the mouse should move slowly (true) or instantly (false).</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Control.DoubleClick(System.Boolean)">
+            <summary>
+            Performs a double left click on the element.
+            </summary>
+            <param name="moveMouse">Flag to indicate, if the mouse should move slowly (true) or instantly (false).</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Control.RightClick(System.Boolean)">
+            <summary>
+            Performs a right click on the element.
+            </summary>
+            <param name="moveMouse">Flag to indicate, if the mouse should move slowly (true) or instantly (false).</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Control.RightClick(System.TimeSpan,System.Boolean)">
+            <summary>
+            Performs a right click on the element.
+            </summary>
+            <param name="delay">The time to wait after the click. Useful if there is an animation for example.</param>
+            <param name="moveMouse">Flag to indicate, if the mouse should move slowly (true) or instantly (false).</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Control.RightDoubleClick(System.Boolean)">
+            <summary>
+            Performs a double right click on the element.
+            </summary>
+            <param name="moveMouse">Flag to indicate, if the mouse should move slowly (true) or instantly (false).</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Control.Focus">
+            <summary>
+            Sets the focus to this element.
+            Warning: This can be unreliable! <see cref="M:Gu.Wpf.UiAutomation.Control.SetForeground" /> should be more reliable.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Control.ClearFocus">
+            <summary>
+            Clear keyboard focus. Useful for updating bindings when UpdateSOurceTrigger=LostFocus.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Control.FocusNative">
+            <summary>
+            Sets the focus by using the Win32 SetFocus() method.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Control.SetForeground">
+            <summary>
+            Brings the element to the foreground.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.DataGrid.RowCount">
+            <summary>
+            Gets the total row count excluding new item placeholder.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.DataGrid.ColumnCount">
+            <summary>
+            Gets the total column count.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.DataGrid.DetailsPresenter">
+            <summary>
+            The presenter for row header template.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.DataGrid.ColumnHeaders">
+            <summary>
+            Gets all column header elements.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.DataGrid.Rows">
+            <summary>
+            Returns the rows which are currently visible to Interop.UIAutomationClient. Might not be the full list (eg. in virtualized lists)!
+            Use <see cref="M:Gu.Wpf.UiAutomation.DataGrid.GetRowByIndex(System.Int32)" /> to make sure to get the correct row.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.DataGrid.SelectedItems">
+            <summary>
+            Gets all selected items.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.DataGrid.SelectedItem">
+            <summary>
+            Gets the first selected item or null otherwise.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.DataGrid.Select(System.Int32)">
+            <summary>
+            Select a row by index.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.DataGrid.Select(System.Int32,System.Int32)">
+            <summary>
+            Select a row by index.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.DataGrid.Select(System.Int32,System.String)">
+            <summary>
+            Select the first row by text in the given column.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.DataGrid.GetRowByIndex(System.Int32)">
+            <summary>
+            Get a row by index.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.DataGrid.GetRowByValue(System.Int32,System.String)">
+            <summary>
+            Get a row by text in the given column.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.DataGrid.GetRowsByValue(System.Int32,System.String,System.Int32)">
+            <summary>
+            Get all rows where the value of the given column matches the given value.
+            </summary>
+            <param name="columnIndex">The column index to check.</param>
+            <param name="value">The value to check.</param>
+            <param name="maxItems">Maximum numbers of items to return, 0 for all.</param>
+            <returns>List of found rows.</returns>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.DataGridCell.ContainingRow">
+            <summary>
+            Get the parent of the cell (which should be the row).
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.DataGridCell.Enter(System.String,System.Nullable{System.TimeSpan})">
+            <summary>
+            Simulate typing in text. This is slower than setting Text but raises more events.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.DataGridRow.FindCellByText(System.String)">
+            <summary>
+            Find a cell by a given text.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Expander.Expand(System.TimeSpan)">
+            <summary>
+            Invokes <see cref="M:Gu.Wpf.UiAutomation.Expander.Expand"/>.
+            Then waits for <paramref name="delay"/>, useful if there is an animation.
+            </summary>
+            <param name="delay">The time to wait after the click. Useful if there is an animation for example.</param>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.GridHeader">
+            <summary>
+            Header item for grids and tables.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.GridViewCell">
+            <summary>
+            Cell element for grids and tables.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.HeaderedContentControl.HeaderText">
+            <summary>
+            The header text.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.HeaderedContentControl.Header">
+            <summary>
+            The first child so it assumes there is exactly one element in the header.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.HeaderedContentControl.Content">
+            <summary>
+            When the content is a single item.
+            This returns this.FindAllChildren().Skip(1).Single();
+            So it assumes there is exactly one element in the header.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.HeaderedContentControl.ContentCollection">
+            <summary>
+            When the content is an ItemsControl.
+            This returns this.FindAllChildren().Skip(1).ToArray();
+            So it assumes there is exactly one element in the header.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.HeaderedContentControl.ContentElements``1(System.Func{System.Windows.Automation.AutomationElement,``0})">
+            <summary>
+            When the content is an ItemsControl.
+            This returns this.FindAllChildren().Skip(1).ToArray();
+            So it assumes there is exactly one element in the header.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.HorizontalScrollBar.SmallDecrementText">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.HorizontalScrollBar.SmallIncrementText">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.HorizontalScrollBar.LargeDecrementText">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.HorizontalScrollBar.LargeIncrementText">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.ListView.RowCount">
+            <summary>
+            Gets the total row count.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.ListView.ColumnCount">
+            <summary>
+            Gets the total column count.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.ListView.ColumnHeaders">
+            <summary>
+            Gets all column header elements.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.ListView.Select(System.Int32,System.String)">
+            <summary>
+            Select the first row by text in the given column.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.ListView.GetRowByIndex(System.Int32)">
+            <summary>
+            Get a row by index.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.ListView.GetRowByValue(System.Int32,System.String)">
+            <summary>
+            Get a row by text in the given column.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.ListView.GetRowsByValue(System.Int32,System.String,System.Int32)">
+            <summary>
+            Get all rows where the value of the given column matches the given value.
+            </summary>
+            <param name="columnIndex">The column index to check.</param>
+            <param name="value">The value to check.</param>
+            <param name="maxItems">Maximum numbers of items to return, 0 for all.</param>
+            <returns>List of found rows.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.ListViewItem.FindCellByText(System.String)">
+            <summary>
+            Find a cell by a given text.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.Menu">
+            <summary>
+            Represents a menu or a menubar, which contains menuitems.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Menu.IsWin32Menu">
+            <summary>
+            Flag to indicate if the menu is a Win32 menu because that one needs special handling.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.MenuItem">
+            <summary>
+            Represents a menuitem which can also contain sub-menuitems.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.MenuItem.IsWin32Menu">
+            <summary>
+            Flag to indicate if the containing menu is a Win32 menu because that one needs special handling.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.MenuItems">
+            <summary>
+            Represents a list of <see cref="T:Gu.Wpf.UiAutomation.MenuItem"/>s.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.MultiSelector`1.SelectedItems">
+            <summary>
+            Gets all selected items.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.MultiSelector`1.AddToSelection(System.Int32)">
+            <summary>
+            Add a row to the selection by index.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.MultiSelector`1.RemoveFromSelection(System.Int32)">
+            <summary>
+            Remove a row from the selection by index.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.SelectionItemControl">
+            <summary>
+            An UI-item which supports the <see cref="P:Gu.Wpf.UiAutomation.SelectionItemControl.SelectionItemPattern" />.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.SelectionItemControl.IsSelected">
+            <summary>
+            Flag to get/set the selection of this element.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.SelectionItemControl.Select">
+            <summary>
+            Select this element.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.SelectionItemControl.AddToSelection">
+            <summary>
+            Add this element to the selection.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.SelectionItemControl.RemoveFromSelection">
+            <summary>
+            Remove this element from the selection.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.RadioButton.IsChecked">
+            <summary>
+            Flag to get/set the selection of this element.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Selector`1.SelectedItem">
+            <summary>
+            Gets the first selected item or null otherwise.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Selector`1.SelectedIndex">
+            <summary>
+            The index of the currently selected <see cref="T:Gu.Wpf.UiAutomation.TabItem" />.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Selector`1.Select(System.Int32)">
+            <summary>
+            Select a row by index.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.TabItem.HeaderText">
+            <summary>
+            The header text.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.TabItem.Header">
+            <summary>
+            The first child so it assumes there is exactly one element in the header.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.TabItem.Content">
+            <summary>
+            When the content is a single item.
+            This returns this.FindAllChildren().Skip(1).Single();
+            So it assumes there is exactly one element in the header.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.TabItem.ContentCollection">
+            <summary>
+            When the content is an ItemsControl.
+            This returns this.FindAllChildren().Skip(1).ToArray();
+            So it assumes there is exactly one element in the header.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.TabItem.ContentElements``1(System.Func{System.Windows.Automation.AutomationElement,``0})">
+            <summary>
+            When the content is an ItemsControl.
+            This returns this.FindAllChildren().Skip(1).ToArray();
+            So it assumes there is exactly one element in the header.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.TextBoxBase.Enter(System.String)">
+            <summary>
+            Simulate typing in text. This is slower than setting Text but raises more events.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Thumb.SlideHorizontally(System.Int32)">
+            <summary>
+            Moves the slider horizontally.
+            </summary>
+            <param name="distance">+ for right, - for left.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Thumb.SlideVertically(System.Int32)">
+            <summary>
+            Moves the slider vertically.
+            </summary>
+            <param name="distance">+ for down, - for up.</param>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.TreeView.SelectedTreeViewItem">
+            <summary>
+            The currently selected <see cref="T:Gu.Wpf.UiAutomation.TreeViewItem" />.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.TreeViewItem.Items">
+            <summary>
+            All child <see cref="T:Gu.Wpf.UiAutomation.TreeViewItem" /> objects from this <see cref="T:Gu.Wpf.UiAutomation.TreeViewItem" />.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.TreeViewItem.Text">
+            <summary>
+            The text of the <see cref="T:Gu.Wpf.UiAutomation.TreeViewItem" />.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.UiElement">
+            <summary>
+            Wrapper object for each ui element which is automatable.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.UiElement.AutomationElement">
+            <summary>
+            The wrapped <see cref="T:System.Windows.Automation.AutomationElement"/>.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.UiElement.Parent">
+            <summary>
+            Get the parent <see cref="T:Gu.Wpf.UiAutomation.UiElement"/>.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.UiElement.Children">
+            <summary>
+            Get the children.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.UiElement.Window">
+            <summary>
+            Get the parent <see cref="T:Gu.Wpf.UiAutomation.UiElement"/>.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.UiElement.ActualWidth">
+            <summary>
+            The current used automation object.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.UiElement.ActualHeight">
+            <summary>
+            The current used automation object.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.UiElement.Bounds">
+            <summary>
+            The bounding rectangle relative to the screen.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.UiElement.RenderBounds">
+            <summary>
+            The bounding rectangle relative to the window.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.UiElement.FrameworkType">
+            <summary>
+            The direct framework type of the element.
+            Results in "FrameworkType.Unknown" if it couldn't be resolved.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.UiElement.AutomationId">
+            <summary>
+            The automation id of the element.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.UiElement.Name">
+            <summary>
+            The name of the element.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.UiElement.ClassName">
+            <summary>
+            The class name of the element.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.UiElement.ControlType">
+            <summary>
+            The control type of the element.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.UiElement.IsOffscreen">
+            <summary>
+            Flag if the element off-screen or on-screen(visible).
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.UiElement.CachedChildren">
+            <summary>
+            Gets the cached children for this element.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.UiElement.CachedParent">
+            <summary>
+            Gets the cached parent for this element.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.DrawHighlight">
+            <summary>
+            Draws a red highlight around the element.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.DrawHighlight(System.Windows.Media.Color)">
+            <summary>
+            Draws a manually colored highlight around the element.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.DrawHighlight(System.Drawing.Color)">
+            <summary>
+            Draws a manually colored highlight around the element.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.DrawHighlight(System.Boolean,System.Drawing.Color,System.TimeSpan)">
+            <summary>
+            Draw a highlight around the element with the given settings.
+            </summary>
+            <param name="blocking">Flag to indicate if further execution waits until the highlight is removed.</param>
+            <param name="color">The color to draw the highlight.</param>
+            <param name="duration">The duration (im ms) how long the highlight is shown.</param>
+            <remarks>Override for winforms color.</remarks>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.DrawHighlight(System.Boolean,System.Windows.Media.Color,System.TimeSpan)">
+            <summary>
+            Draw a highlight around the element with the given settings.
+            </summary>
+            <param name="blocking">Flag to indicate if further execution waits until the highlight is removed.</param>
+            <param name="color">The color to draw the highlight.</param>
+            <param name="duration">The duration (im ms) how long the highlight is shown.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.Capture">
+            <summary>
+            Captures the object as screenshot in WinForms Bitmap format.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.CaptureWpf">
+            <summary>
+            Captures the object as screenshot in WPF BitmapImage format.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.CaptureToFile(System.String)">
+            <summary>
+            Captures the object as screenshot directly into the given file.
+            </summary>
+            <param name="filePath">The filepath where the screenshot should be saved.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.GetClickablePoint">
+            <summary>
+            Gets a clickable point of the element.
+            </summary>
+            <exception cref="T:System.Windows.Automation.NoClickablePointException">Thrown when no clickable point was found.</exception>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.TryGetClickablePoint(System.Windows.Point@)">
+            <summary>
+            Tries to get a clickable point of the element.
+            </summary>
+            <param name="point">The clickable point or null, if no point was found.</param>
+            <returns>True if a point was found, false otherwise.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.SubscribeToEvent(System.Windows.Automation.AutomationEvent,System.Windows.Automation.TreeScope,System.Action{Gu.Wpf.UiAutomation.UiElement,System.Windows.Automation.AutomationEventArgs})">
+            <summary>
+            Registers the given event.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.SubscribeToPropertyChangedEvent(System.Windows.Automation.TreeScope,System.Windows.Automation.AutomationProperty,System.Action{Gu.Wpf.UiAutomation.UiElement,System.Windows.Automation.AutomationPropertyChangedEventArgs})">
+            <summary>
+            Registers a property changed event with the given property.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.SubscribeToPropertyChangedEvent(System.Windows.Automation.TreeScope,System.Action{Gu.Wpf.UiAutomation.UiElement,System.Windows.Automation.AutomationPropertyChangedEventArgs},System.Windows.Automation.AutomationProperty[])">
+            <summary>
+            Registers a property changed event with the given property.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.SubscribeToStructureChangedEvent(System.Windows.Automation.TreeScope,System.Action{Gu.Wpf.UiAutomation.UiElement,System.Windows.Automation.StructureChangedEventArgs})">
+            <summary>
+            Registers a structure changed event.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.GetSupportedPatterns">
+            <summary>
+            Gets the available patterns for an element via properties.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.IsPatternSupported(System.Windows.Automation.AutomationPattern)">
+            <summary>
+            Checks if the given pattern is available for the element via properties.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.GetSupportedPatternsDirect">
+            <summary>
+            Gets the available patterns for an element via UIA method.
+            Does not work with cached elements and might be unreliable.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.IsPatternSupportedDirect(System.Windows.Automation.AutomationPattern)">
+            <summary>
+            Checks if the given pattern is available for the element via UIA method.
+            Does not work with cached elements and might be unreliable.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.GetSupportedPropertiesDirect">
+            <summary>
+            Gets the available properties for an element via UIA method.
+            Does not work with cached elements and might be unreliable.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.IsPropertySupportedDirect(System.Windows.Automation.AutomationProperty)">
+            <summary>
+            Method to check if the element supports the given property via UIA method.
+            Does not work with cached elements and might be unreliable.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.Equals(Gu.Wpf.UiAutomation.UiElement)">
+            <summary>
+            Compares two elements.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.ToString">
+            <summary>
+            Overrides the string representation of the element with something useful.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.Register(System.Windows.Automation.Condition,System.Func{System.Windows.Automation.AutomationElement,Gu.Wpf.UiAutomation.UiElement})">
+            <summary>
+            Register a custom type for <see cref="M:Gu.Wpf.UiAutomation.UiElement.FromAutomationElement(System.Windows.Automation.AutomationElement)"/>.
+            </summary>
+            <param name="condition">The condition that matches the type.</param>
+            <param name="create">The factory method for creating an instance.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindButton(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.Button"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindCalendar(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.Calendar"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindCalendarDayButton(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.CalendarDayButton"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindCheckBox(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.CheckBox"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindComboBox(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.ComboBox"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindDataGrid(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.DataGrid"/> by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindDatePicker(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.DatePicker"/> by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindFrame(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.Frame"/> by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindLabel(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.Label"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindGridSplitter(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.GridSplitter"/> by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindGroupBox(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.GroupBox"/> box by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindExpander(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.Expander"/> by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindMenu(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.Menu"/> by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindMenuItem(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.MenuItem"/> by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindHorizontalScrollBar(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.HorizontalScrollBar"/> by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindVerticalScrollBar(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.VerticalScrollBar"/> bar by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindListBox(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.ListBox"/> by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindListView(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.ListView"/> by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindOpenFileDialog(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.OpenFileDialog"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindPasswordBox(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.PasswordBox"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindRichTextBox(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.RichTextBox"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindProgressBar(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.ProgressBar"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindRadioButton(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.RadioButton"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindRepeatButton(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.RepeatButton"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindSaveFileDialog(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.SaveFileDialog"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindSeparator(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.Separator"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindSlider(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.Slider"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindScrollViewer(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.ScrollViewer"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindTextBlock(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.TextBlock"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindTextBox(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.TextBox"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindTextBoxBase(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.TextBoxBase"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindToggleButton(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.ToggleButton"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindTabControl(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.TabControl"/> by x:Name, Content or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindTitleBar(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.TitleBar"/> by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindToolBar(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.ToolBar"/> by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindTreeView(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.TreeView"/> by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindUserControl(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.UserControl"/> by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindStatusBar(System.String)">
+            <summary>
+            Find the first <see cref="T:Gu.Wpf.UiAutomation.StatusBar"/> by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindDescendant(System.String,System.Windows.Automation.ControlType)">
+            <summary>
+            Find the first descendant by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+            <param name="controlType">The control type.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindDescendant``1(System.String,System.Windows.Automation.ControlType,System.Func{System.Windows.Automation.AutomationElement,``0})">
+            <summary>
+            Find the first element by x:Name, Header or AutomationID.
+            </summary>
+            <param name="name">x:Name, Content or AutomationID.</param>
+            <param name="controlType">The control type.</param>
+            <param name="wrap">The function to produce a T from the match. Normally x => new Foo(x).</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindAll(System.Windows.Automation.TreeScope,System.Windows.Automation.Condition)">
+            <summary>
+            Finds all elements in the given treescope and with the given condition.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindAll``1(System.Windows.Automation.TreeScope,System.Windows.Automation.Condition,System.Func{System.Windows.Automation.AutomationElement,``0})">
+            <summary>
+            Finds all elements in the given treescope and with the given condition.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindAll(System.Windows.Automation.TreeScope,System.Windows.Automation.Condition,System.TimeSpan)">
+            <summary>
+            Finds all elements in the given treescope and with the given condition within the given timeout.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.TryFindAll(System.Windows.Automation.TreeScope,System.Windows.Automation.Condition,System.TimeSpan,System.Collections.Generic.IReadOnlyList{Gu.Wpf.UiAutomation.UiElement}@)">
+            <summary>
+            Finds all elements in the given treescope and with the given condition within the given timeout.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.TryFindAll``1(System.Windows.Automation.TreeScope,System.Windows.Automation.Condition,System.Func{System.Windows.Automation.AutomationElement,``0},System.TimeSpan,System.Collections.Generic.IReadOnlyList{``0}@)">
+            <summary>
+            Finds all elements in the given treescope and with the given condition within the given timeout.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindFirst(System.Windows.Automation.TreeScope,System.Windows.Automation.Condition)">
+            <summary>
+            Finds the first element which is in the given treescope with the given condition.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindFirst``1(System.Windows.Automation.TreeScope,System.Windows.Automation.Condition,System.Func{System.Windows.Automation.AutomationElement,``0})">
+            <summary>
+            Finds the first element which is in the given treescope with the given condition.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindFirst(System.Windows.Automation.TreeScope,System.Windows.Automation.Condition,System.TimeSpan)">
+            <summary>
+            Finds the first element which is in the given treescope with the given condition within the given timeout period.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.TryFindFirst(System.Windows.Automation.TreeScope,System.Windows.Automation.Condition,System.TimeSpan,Gu.Wpf.UiAutomation.UiElement@)">
+            <summary>
+            Finds the first element which is in the given treescope with the given condition within the given timeout period.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindFirst``1(System.Windows.Automation.TreeScope,System.Windows.Automation.Condition,System.Func{System.Windows.Automation.AutomationElement,``0},System.TimeSpan)">
+            <summary>
+            Finds the first element which is in the given treescope with the given condition within the given timeout period.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.TryFindFirst``1(System.Windows.Automation.TreeScope,System.Windows.Automation.Condition,System.Func{System.Windows.Automation.AutomationElement,``0},System.TimeSpan,``0@)">
+            <summary>
+            Finds the first element which is in the given treescope with the given condition within the given timeout period.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindAt(System.Windows.Automation.TreeScope,System.Windows.Automation.Condition,System.Int32,System.TimeSpan)">
+            <summary>
+            Finds the first element which is in the given treescope with the given condition within the given timeout period.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.TryFindAt(System.Windows.Automation.TreeScope,System.Windows.Automation.Condition,System.Int32,System.TimeSpan,Gu.Wpf.UiAutomation.UiElement@)">
+            <summary>
+            Finds the first element which is in the given treescope with the given condition within the given timeout period.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindAt``1(System.Windows.Automation.TreeScope,System.Windows.Automation.Condition,System.Int32,System.Func{System.Windows.Automation.AutomationElement,``0},System.TimeSpan)">
+            <summary>
+            Finds the first element which is in the given treescope with the given condition within the given timeout period.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.TryFindAt``1(System.Windows.Automation.TreeScope,System.Windows.Automation.Condition,System.Int32,System.Func{System.Windows.Automation.AutomationElement,``0},System.TimeSpan,``0@)">
+            <summary>
+            Finds the first element which is in the given treescope with the given condition within the given timeout period.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindFirstNested(System.Windows.Automation.Condition[])">
+            <summary>
+            Finds the first element by looping thru all conditions.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindAllNested(System.Windows.Automation.Condition[])">
+            <summary>
+            Finds all elements by looping thru all conditions.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindFirstByXPath(System.String)">
+            <summary>
+            Finds for the first item which matches the given xpath.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.UiElement.FindAllByXPath(System.String)">
+            <summary>
+            Finds all items which match the given xpath.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.VerticalScrollBar.SmallDecrementText">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.VerticalScrollBar.SmallIncrementText">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.VerticalScrollBar.LargeDecrementText">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.VerticalScrollBar.LargeIncrementText">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Window.IsMainWindow">
+            <summary>
+            Flag to indicate, if the window is the application's main window.
+            Is used so that it does not need to be looked up again in some cases (e.g. Context Menu).
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Window.CanResize">
+            <summary>
+            Get TransformPattern.CanResize.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Window.CanMove">
+            <summary>
+            Get TransformPattern.CanMove.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Window.Popup">
+            <summary>
+            Gets the current WPF popup window.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Window.ContextMenu">
+            <summary>
+            Gets the contest menu for the window.
+            Note: It uses the FrameworkType of the window as lookup logic. Use <see cref="M:Gu.Wpf.UiAutomation.Window.GetContextMenuByFrameworkType(Gu.Wpf.UiAutomation.FrameworkType)" /> if you want to control this.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Window.MoveTo(System.Int32,System.Int32)">
+            <summary>Moves the control.</summary>
+            <param name="x">Absolute screen coordinates of the left side of the control.</param>
+            <param name="y">Absolute screen coordinates of the top of the control.</param>
+            <exception cref="T:System.InvalidOperationException">The <see cref="P:System.Windows.Automation.TransformPattern.TransformPatternInformation.CanMove" /> property is false.</exception>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Window.Resize(System.Int32,System.Int32)">
+            <summary>Resizes the control.</summary>
+            <param name="width">The new width of the window, in pixels.</param>
+            <param name="height">The new height of the window, in pixels.</param>
+            <exception cref="T:System.InvalidOperationException">The <see cref="P:System.Windows.Automation.TransformPattern.TransformPatternInformation.CanResize" /> property is false.</exception>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Window.SetTransparency(System.Byte)">
+            <summary>
+            Brings the element to the foreground.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Window.GetMainWindow">
+            <summary>
+            Gets the main window (first window on desktop with the same process as this window).
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator">
+            <summary>
+            Custom implementation of a <see cref="T:System.Xml.XPath.XPathNavigator" /> which allows
+            selecting items by xpath by using the <see cref="T:System.Windows.Automation.TreeWalker" />.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.HasAttributes">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.Value">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.UnderlyingObject">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.NodeType">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.LocalName">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.NameTable">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.NamespaceURI">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.Prefix">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.BaseURI">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.IsEmptyElement">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.MoveToFirstAttribute">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.MoveToNextAttribute">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.GetAttribute(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.MoveToAttribute(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.MoveToFirstNamespace(System.Xml.XPath.XPathNamespaceScope)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.MoveToNextNamespace(System.Xml.XPath.XPathNamespaceScope)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.MoveToRoot">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.MoveToNext">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.MoveToPrevious">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.MoveToFirstChild">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.MoveToParent">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.MoveTo(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.MoveToId(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AutomationElementXPathNavigator.IsSamePosition(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.Capture">
+            <summary>
+            Provides methods to capture screenshots or partially screenshots.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Capture.Screen">
+            <summary>
+            Captures the whole screen (all monitors).
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Capture.ScreenToFile(System.String)">
+            <summary>
+            Captures the screen and saves it to a file.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Capture.Element(Gu.Wpf.UiAutomation.UiElement)">
+            <summary>
+            Captures an element and returns the image.
+            Note that a sleep may be required before if the control is newly loaded.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Capture.ElementToFile(Gu.Wpf.UiAutomation.UiElement,System.String)">
+            <summary>
+            Captures an element and saves it to a file.
+            Note that a sleep may be required before if the control is newly loaded.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Capture.RectangleToFile(System.Windows.Rect,System.String)">
+            <summary>
+            Captures a specific area and saves it to a file.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Capture.Rectangle(System.Windows.Rect)">
+            <summary>
+            Captures a specific area from the screen.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Capture.ToWpf(System.Drawing.Bitmap)">
+            <summary>
+            Converts a WinForms bitmap to a WPF bitmap.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Conditions.Text">
+            <summary>
+            For finding textblocks and labels.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Debug.GetXPathToElement(Gu.Wpf.UiAutomation.UiElement,Gu.Wpf.UiAutomation.UiElement)">
+            <summary>
+            Gets the XPath to the element until the desktop or the given root element.
+            Warning: This is quite a heavy operation.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.Disposable">
+            <summary>
+            Provides a set of static methods for creating <see cref="T:System.IDisposable"/> objects.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Disposable.Empty">
+            <summary>
+            Gets the disposable that does nothing when disposed.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Disposable.Create(System.Action)">
+            <summary>
+            Creates a disposable object that invokes the specified action when disposed.
+            </summary>
+            <param name="dispose">Action to run during the first call to <see cref="M:System.IDisposable.Dispose"/>. The action is guaranteed to be run at most once.</param>
+            <returns>The disposable object that runs the given action upon disposal.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="dispose"/> is <c>null</c>.</exception>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.Dump">
+            <summary>
+            For dumping the automation tree of a control.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Dump.Recursive(Gu.Wpf.UiAutomation.UiElement,System.Boolean)">
+            <summary>
+            Dump the visual tree of <paramref name="element"/>.
+            </summary>
+            <param name="element">The <see cref="T:Gu.Wpf.UiAutomation.UiElement"/>.</param>
+            <param name="allPropertiesAndPatterns">If all automation properties and patterns should be written to the result.</param>
+            <returns>A string representing the automation tree of <paramref name="element"/>.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Dump.Recursive(System.Windows.Automation.AutomationElement,System.Boolean)">
+            <summary>
+            Dump the visual tree of <paramref name="element"/>.
+            </summary>
+            <param name="element">The <see cref="T:Gu.Wpf.UiAutomation.UiElement"/>.</param>
+            <param name="allPropertiesAndPatterns">If all automation properties and patterns should be written to the result.</param>
+            <returns>A string representing the automation tree of <paramref name="element"/>.</returns>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.AssertException">
+            <summary>
+            Thrown when an assertion failed.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AssertException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gu.Wpf.UiAutomation.AssertException"/> class.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AssertException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gu.Wpf.UiAutomation.AssertException"/> class.
+            </summary>
+            <param name="message"> The error message that explains the reason for the exception.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AssertException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gu.Wpf.UiAutomation.AssertException"/> class.
+            </summary>
+            <param name="message"> The error message that explains the reason for the exception.</param>
+            <param name="innerException"> The exception that caused the current exception.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AssertException.Create(System.String)">
+            <summary>
+            Create an <see cref="T:Gu.Wpf.UiAutomation.AssertException"/> or an exception specific to the currently used test framework if found.
+            </summary>
+            <param name="message">The message explaining why the assertion failed.</param>
+            <returns>The exception.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.AssertException.Create(System.String,System.Exception)">
+            <summary>
+            Create an <see cref="T:Gu.Wpf.UiAutomation.AssertException"/> or an exception specific to the currently used test framework if found.
+            </summary>
+            <param name="message">The message explaining why the assertion failed.</param>
+            <param name="innerException"> The exception that caused the current exception.</param>
+            <returns>The exception.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.ExtensionMethods.Clamp``1(``0,``0,``0)">
+            <summary>
+            Makes sure a comparable object is between a given range.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.ExtensionMethods.HasValue(System.Double)">
+            <summary>
+            Checks if a double is not NaN and not Infinity.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.ImageAssert.AreEqual(System.String,System.Windows.UIElement)">
+            <summary>
+            Compare Capture.Rectangle(element.Bounds) to the expected image.
+            </summary>
+            <param name="fileName">Can be a full file name relative filename or the name of a resource.</param>
+            <param name="element">The UIElement.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.ImageAssert.AreEqual(System.String,System.Windows.UIElement,System.Action{System.Exception,System.Drawing.Bitmap})">
+            <summary>
+            Compare Capture.Rectangle(element.Bounds) to the expected image.
+            </summary>
+            <param name="fileName">Can be a full file name relative filename or the name of a resource.</param>
+            <param name="element">The UIElement.</param>
+            <param name="onFail">Useful for saving the actual image on error for example.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.ImageAssert.AreEqual(System.String,Gu.Wpf.UiAutomation.UiElement)">
+            <summary>
+            Compare Capture.Rectangle(element.Bounds) to the expected image.
+            </summary>
+            <param name="fileName">Can be a full file name relative filename or the name of a resource.</param>
+            <param name="element">The automation element.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.ImageAssert.AreEqual(System.String,Gu.Wpf.UiAutomation.UiElement,System.Action{System.Exception,System.Drawing.Bitmap})">
+            <summary>
+            Compare Capture.Rectangle(element.Bounds) to the expected image.
+            </summary>
+            <param name="fileName">Can be a full file name relative filename or the name of a resource.</param>
+            <param name="element">The automation element.</param>
+            <param name="onFail">Useful for saving the actual image on error for example.</param>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.Interpolation">
+            <summary>
+            Helper for interpolating mouse and touch drag.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Interpolation.Start(System.Windows.Point,System.Windows.Point,System.Double)">
+            <summary>
+            Create an instance of <see cref="T:Gu.Wpf.UiAutomation.Interpolation"/>.
+            </summary>
+            <param name="from">The start position.</param>
+            <param name="to">The end position.</param>
+            <param name="speed">The speed in pixels / s.</param>
+            <returns>An instance of <see cref="T:Gu.Wpf.UiAutomation.Interpolation"/>.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Interpolation.Start(Gu.Wpf.UiAutomation.WindowsAPI.POINT,Gu.Wpf.UiAutomation.WindowsAPI.POINT,System.Double)">
+            <summary>
+            Create an instance of <see cref="T:Gu.Wpf.UiAutomation.Interpolation"/>.
+            </summary>
+            <param name="from">The start position.</param>
+            <param name="to">The end position.</param>
+            <param name="speed">The speed in pixels / s.</param>
+            <returns>An instance of <see cref="T:Gu.Wpf.UiAutomation.Interpolation"/>.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Interpolation.Start(System.Windows.Point,System.Windows.Point,System.TimeSpan)">
+            <summary>
+            Create an instance of the class.
+            </summary>
+            <param name="from">The start position.</param>
+            <param name="to">The end position.</param>
+            <param name="time">The total time of the interpolation.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Interpolation.Start(Gu.Wpf.UiAutomation.WindowsAPI.POINT,Gu.Wpf.UiAutomation.WindowsAPI.POINT,System.TimeSpan)">
+            <summary>
+            Create an instance of the class.
+            </summary>
+            <remarks>
+            Calls Restart() on <see cref="F:Gu.Wpf.UiAutomation.Interpolation.stopwatch"/>.
+            </remarks>
+            <param name="from">The start position.</param>
+            <param name="to">The end position.</param>
+            <param name="time">The total time of the interpolation.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Interpolation.Duration(Gu.Wpf.UiAutomation.WindowsAPI.POINT,Gu.Wpf.UiAutomation.WindowsAPI.POINT,System.Double)">
+            <summary>
+            Calculate the time it takes to travel from <paramref name="from"/> to <paramref name="to"/> at <paramref name="speed"/>.
+            </summary>
+            <param name="from">The start point.</param>
+            <param name="to">The end point.</param>
+            <param name="speed">The speed in pixels per second.</param>
+            <returns>The time.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Interpolation.Duration(System.Windows.Point,System.Windows.Point,System.Double)">
+            <summary>
+            Calculate the time it takes to travel from <paramref name="from"/> to <paramref name="to"/> at <paramref name="speed"/>.
+            </summary>
+            <param name="from">The start point.</param>
+            <param name="to">The end point.</param>
+            <param name="speed">The speed in pixels per second.</param>
+            <returns>The time.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Interpolation.Duration(System.Windows.Vector,System.Double)">
+            <summary>
+            Calculate the time it takes to travel <paramref name="delta"/> at <paramref name="speed"/>.
+            </summary>
+            <param name="delta">The start point.</param>
+            <param name="speed">The speed in pixels per second.</param>
+            <returns>The time.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Interpolation.TryGetPosition(Gu.Wpf.UiAutomation.WindowsAPI.POINT@)">
+            <summary>
+            Try get the interpolated position at current time.
+            </summary>
+            <param name="position">The current position.</param>
+            <returns>True until arrived at end position.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Interpolation.TryGetPosition(System.TimeSpan,Gu.Wpf.UiAutomation.WindowsAPI.POINT@)">
+            <summary>
+            Try get the interpolated position at <paramref name="elapsed"/>.
+            This is exposed mostly for test.
+            </summary>
+            <param name="elapsed">The time elapsed since the start.</param>
+            <param name="position">The current position.</param>
+            <returns>True until arrived at end position.</returns>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.LBUTTON">
+            <summary>
+            Left mouse button
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.RBUTTON">
+            <summary>
+            Right mouse button
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.CANCEL">
+            <summary>
+            Control-break processing
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.MBUTTON">
+            <summary>
+            Middle mouse button (three-button mouse)
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.XBUTTON1">
+            <summary>
+            Windows 2000/XP: X1 mouse button
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.XBUTTON2">
+            <summary>
+            Windows 2000/XP: X2 mouse button
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.BACK">
+            <summary>
+            BACKSPACE key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.TAB">
+            <summary>
+            TAB key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.CLEAR">
+            <summary>
+            CLEAR key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.RETURN">
+            <summary>
+            ENTER key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.SHIFT">
+            <summary>
+            SHIFT key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.CONTROL">
+            <summary>
+            CTRL key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.ALT">
+            <summary>
+            ALT key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.PAUSE">
+            <summary>
+            PAUSE key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.CAPITAL">
+            <summary>
+            CAPS LOCK key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KANA">
+            <summary>
+            Input Method Editor (IME) Kana mode
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.HANGUL">
+            <summary>
+            IME Hangul mode
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.JUNJA">
+            <summary>
+            IME Junja mode
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.FINAL">
+            <summary>
+            IME final mode
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.HANJA">
+            <summary>
+            IME Hanja mode
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KANJI">
+            <summary>
+            IME Kanji mode
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.ESCAPE">
+            <summary>
+            ESC key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.CONVERT">
+            <summary>
+            IME convert
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.NONCONVERT">
+            <summary>
+            IME nonconvert
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.ACCEPT">
+            <summary>
+            IME accept
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.MODECHANGE">
+            <summary>
+            IME mode change request
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.SPACE">
+            <summary>
+            SPACEBAR
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.PRIOR">
+            <summary>
+            PAGE UP key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.NEXT">
+            <summary>
+            PAGE DOWN key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.END">
+            <summary>
+            END key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.HOME">
+            <summary>
+            HOME key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.LEFT">
+            <summary>
+            LEFT ARROW key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.UP">
+            <summary>
+            UP ARROW key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.RIGHT">
+            <summary>
+            RIGHT ARROW key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.DOWN">
+            <summary>
+            DOWN ARROW key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.SELECT">
+            <summary>
+            SELECT key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.PRINT">
+            <summary>
+            PRINT key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.EXECUTE">
+            <summary>
+            EXECUTE key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.SNAPSHOT">
+            <summary>
+            PRINT SCREEN key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.INSERT">
+            <summary>
+            INS key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.DELETE">
+            <summary>
+            DEL key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.HELP">
+            <summary>
+            HELP key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_0">
+            <summary>
+            0 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_1">
+            <summary>
+            1 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_2">
+            <summary>
+            2 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_3">
+            <summary>
+            3 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_4">
+            <summary>
+            4 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_5">
+            <summary>
+            5 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_6">
+            <summary>
+            6 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_7">
+            <summary>
+            7 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_8">
+            <summary>
+            8 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_9">
+            <summary>
+            9 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_A">
+            <summary>
+            A key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_B">
+            <summary>
+            B key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_C">
+            <summary>
+            C key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_D">
+            <summary>
+            D key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_E">
+            <summary>
+            E key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_F">
+            <summary>
+            F key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_G">
+            <summary>
+            G key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_H">
+            <summary>
+            H key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_I">
+            <summary>
+            I key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_J">
+            <summary>
+            J key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_K">
+            <summary>
+            K key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_L">
+            <summary>
+            L key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_M">
+            <summary>
+            M key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_N">
+            <summary>
+            N key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_O">
+            <summary>
+            O key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_P">
+            <summary>
+            P key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_Q">
+            <summary>
+            Q key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_R">
+            <summary>
+            R key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_S">
+            <summary>
+            S key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_T">
+            <summary>
+            T key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_U">
+            <summary>
+            U key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_V">
+            <summary>
+            V key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_W">
+            <summary>
+            W key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_X">
+            <summary>
+            X key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_Y">
+            <summary>
+            Y key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.KEY_Z">
+            <summary>
+            Z key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.LWIN">
+            <summary>
+            Left Windows key (Microsoft Natural keyboard)
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.RWIN">
+            <summary>
+            Right Windows key (Natural keyboard)
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.APPS">
+            <summary>
+            Applications key (Natural keyboard)
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.SLEEP">
+            <summary>
+            Computer Sleep key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.NUMPAD0">
+            <summary>
+            Numeric keypad 0 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.NUMPAD1">
+            <summary>
+            Numeric keypad 1 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.NUMPAD2">
+            <summary>
+            Numeric keypad 2 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.NUMPAD3">
+            <summary>
+            Numeric keypad 3 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.NUMPAD4">
+            <summary>
+            Numeric keypad 4 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.NUMPAD5">
+            <summary>
+            Numeric keypad 5 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.NUMPAD6">
+            <summary>
+            Numeric keypad 6 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.NUMPAD7">
+            <summary>
+            Numeric keypad 7 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.NUMPAD8">
+            <summary>
+            Numeric keypad 8 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.NUMPAD9">
+            <summary>
+            Numeric keypad 9 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.MULTIPLY">
+            <summary>
+            Multiply key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.ADD">
+            <summary>
+            Add key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.SEPARATOR">
+            <summary>
+            Separator key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.SUBTRACT">
+            <summary>
+            Subtract key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.DECIMAL">
+            <summary>
+            Decimal key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.DIVIDE">
+            <summary>
+            Divide key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F1">
+            <summary>
+            F1 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F2">
+            <summary>
+            F2 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F3">
+            <summary>
+            F3 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F4">
+            <summary>
+            F4 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F5">
+            <summary>
+            F5 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F6">
+            <summary>
+            F6 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F7">
+            <summary>
+            F7 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F8">
+            <summary>
+            F8 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F9">
+            <summary>
+            F9 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F10">
+            <summary>
+            F10 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F11">
+            <summary>
+            F11 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F12">
+            <summary>
+            F12 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F13">
+            <summary>
+            F13 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F14">
+            <summary>
+            F14 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F15">
+            <summary>
+            F15 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F16">
+            <summary>
+            F16 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F17">
+            <summary>
+            F17 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F18">
+            <summary>
+            F18 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F19">
+            <summary>
+            F19 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F20">
+            <summary>
+            F20 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F21">
+            <summary>
+            F21 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F22">
+            <summary>
+            F22 key, (PPC only) Key used to lock device.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F23">
+            <summary>
+            F23 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.F24">
+            <summary>
+            F24 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.NUMLOCK">
+            <summary>
+            NUM LOCK key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.SCROLL">
+            <summary>
+            SCROLL LOCK key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.LSHIFT">
+            <summary>
+            Left SHIFT key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.RSHIFT">
+            <summary>
+            Right SHIFT key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.LCONTROL">
+            <summary>
+            Left CONTROL key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.RCONTROL">
+            <summary>
+            Right CONTROL key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.LMENU">
+            <summary>
+            Left MENU key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.RMENU">
+            <summary>
+            Right MENU key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.BROWSER_BACK">
+            <summary>
+            Windows 2000/XP: Browser Back key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.BROWSER_FORWARD">
+            <summary>
+            Windows 2000/XP: Browser Forward key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.BROWSER_REFRESH">
+            <summary>
+            Windows 2000/XP: Browser Refresh key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.BROWSER_STOP">
+            <summary>
+            Windows 2000/XP: Browser Stop key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.BROWSER_SEARCH">
+            <summary>
+            Windows 2000/XP: Browser Search key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.BROWSER_FAVORITES">
+            <summary>
+            Windows 2000/XP: Browser Favorites key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.BROWSER_HOME">
+            <summary>
+            Windows 2000/XP: Browser Start and Home key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.VOLUME_MUTE">
+            <summary>
+            Windows 2000/XP: Volume Mute key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.VOLUME_DOWN">
+            <summary>
+            Windows 2000/XP: Volume Down key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.VOLUME_UP">
+            <summary>
+            Windows 2000/XP: Volume Up key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.MEDIA_NEXT_TRACK">
+            <summary>
+            Windows 2000/XP: Next Track key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.MEDIA_PREV_TRACK">
+            <summary>
+            Windows 2000/XP: Previous Track key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.MEDIA_STOP">
+            <summary>
+            Windows 2000/XP: Stop Media key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.MEDIA_PLAY_PAUSE">
+            <summary>
+            Windows 2000/XP: Play/Pause Media key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.LAUNCH_MAIL">
+            <summary>
+            Windows 2000/XP: Start Mail key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.LAUNCH_MEDIA_SELECT">
+            <summary>
+            Windows 2000/XP: Select Media key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.LAUNCH_APP1">
+            <summary>
+            Windows 2000/XP: Start Application 1 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.LAUNCH_APP2">
+            <summary>
+            Windows 2000/XP: Start Application 2 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.OEM_1">
+            <summary>
+            Used for miscellaneous characters; it can vary by keyboard.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.OEM_PLUS">
+            <summary>
+            Windows 2000/XP: For any country/region, the '+' key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.OEM_COMMA">
+            <summary>
+            Windows 2000/XP: For any country/region, the ',' key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.OEM_MINUS">
+            <summary>
+            Windows 2000/XP: For any country/region, the '-' key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.OEM_PERIOD">
+            <summary>
+            Windows 2000/XP: For any country/region, the '.' key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.OEM_2">
+            <summary>
+            Used for miscellaneous characters; it can vary by keyboard.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.OEM_3">
+            <summary>
+            Used for miscellaneous characters; it can vary by keyboard.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.OEM_4">
+            <summary>
+            Used for miscellaneous characters; it can vary by keyboard.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.OEM_5">
+            <summary>
+            Used for miscellaneous characters; it can vary by keyboard.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.OEM_6">
+            <summary>
+            Used for miscellaneous characters; it can vary by keyboard.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.OEM_7">
+            <summary>
+            Used for miscellaneous characters; it can vary by keyboard.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.OEM_8">
+            <summary>
+            Used for miscellaneous characters; it can vary by keyboard.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.OEM_102">
+            <summary>
+            Windows 2000/XP: Either the angle bracket key or the backslash key on the RT 102-key keyboard
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.PROCESSKEY">
+            <summary>
+            Windows 95/98/Me, Windows NT 4.0, Windows 2000/XP: IME PROCESS key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.PACKET">
+            <summary>
+            Windows 2000/XP: Used to pass Unicode characters as if they were keystrokes.
+            The VK_PACKET key is the low word of a 32-bit Virtual Key value used for non-keyboard input methods. For more
+            information,
+            see Remark in KEYBDINPUT, SendInput, WM_KEYDOWN, and WM_KEYUP
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.ATTN">
+            <summary>
+            Attn key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.CRSEL">
+            <summary>
+            CrSel key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.EXSEL">
+            <summary>
+            ExSel key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.EREOF">
+            <summary>
+            Erase EOF key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.PLAY">
+            <summary>
+            Play key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.ZOOM">
+            <summary>
+            Zoom key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.NONAME">
+            <summary>
+            Reserved
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.PA1">
+            <summary>
+            PA1 key
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Key.OEM_CLEAR">
+            <summary>
+            Clear key
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.Keyboard">
+            <summary>
+            Keyboard class to simulate key input.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Keyboard.Type(System.String)">
+            <summary>
+            Types the given text, one char after another.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Keyboard.Type(System.Char)">
+            <summary>
+            Types the given character.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Keyboard.Type(Gu.Wpf.UiAutomation.Key[])">
+            <summary>
+            Types the given keys, one by one.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Keyboard.TypeSimultaneously(Gu.Wpf.UiAutomation.Key[])">
+            <summary>
+            Types the given keys simultaneously (starting with the first).
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Keyboard.TypeScanCode(System.UInt16,System.Boolean)">
+            <summary>
+            Types the given scan-code.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Keyboard.TypeVirtualKeyCode(System.UInt16)">
+            <summary>
+            Types the given virtual key-code.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Keyboard.Hold(Gu.Wpf.UiAutomation.Key)">
+            <summary>
+            Presses the given key and releases it when the returned object is disposed.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Keyboard.Press(Gu.Wpf.UiAutomation.Key)">
+            <summary>
+            Presses the given key.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Keyboard.PressScanCode(System.UInt16,System.Boolean)">
+            <summary>
+            Presses the given scan-code.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Keyboard.PressVirtualKeyCode(System.UInt16)">
+            <summary>
+            Presses the given virtual key-code.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Keyboard.Release(Gu.Wpf.UiAutomation.Key)">
+            <summary>
+            Releases the given key.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Keyboard.ReleaseScanCode(System.UInt16,System.Boolean)">
+            <summary>
+            Releases the given scan-code.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Keyboard.ReleaseVirtualKeyCode(System.UInt16)">
+            <summary>
+            Releases the given virtual key-code.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Keyboard.Pressing(Gu.Wpf.UiAutomation.Key)">
+            <summary>
+            Presses the given key and releases it when the returned object is disposed.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Keyboard.SendInput(Gu.Wpf.UiAutomation.WindowsAPI.KEYBDINPUT)">
+            <summary>
+            Send raw input.
+            </summary>
+            <param name="keyboardInput">The <see cref="T:Gu.Wpf.UiAutomation.WindowsAPI.KEYBDINPUT"/>.</param>
+            <throws><see cref="T:System.ComponentModel.Win32Exception"/>.</throws>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Keyboard.HasScanModifier(System.Byte,Gu.Wpf.UiAutomation.WindowsAPI.VkKeyScanModifiers)">
+            <summary>
+            Checks if a given byte has a specific VkKeyScan-modifier set.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Keyboard.SendInput(System.UInt16,Gu.Wpf.UiAutomation.WindowsAPI.KeyEventFlags)">
+            <summary>
+            Effectively sends the keyboard input command.
+            </summary>
+            <param name="keyCode">The key code to send. Can be the scan code or the virtual key code.</param>
+            <param name="keyFlags">Flag if the key should be pressed or released.</param>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.Keyboard.PressedKey">
+            <summary>Disposable class which presses the key on creation and releases it on dispose.</summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.Mouse">
+            <summary>
+            Mouse class to simulate mouse input.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Mouse.ExtraMillisecondsBecauseOfBugInWindows">
+            <summary>
+            Time to add to the double click time to prevent false double clicks.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.Mouse.WheelDelta">
+            <summary>
+            Number which defines one wheel "click" of the mouse wheel.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Mouse.MoveSpeed">
+            <summary>
+            The speed the mouse is moved when for example dragging.
+            Pixels per second.
+            Default value is 2000.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Mouse.Position">
+            <summary>
+            Current position of the mouse cursor.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Mouse.AreButtonsSwapped">
+            <summary>
+            Flag to indicate if the buttons are swapped (left-handed).
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.MoveBy(System.Int32,System.Int32)">
+            <summary>
+            Moves the mouse by a given delta from the current position.
+            </summary>
+            <param name="deltaX">The delta for the x-axis.</param>
+            <param name="deltaY">The delta for the y-axis.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.MoveBy(System.Windows.Vector)">
+            <summary>
+            Moves the mouse by a given delta from the current position.
+            </summary>
+            <param name="delta">The delta for the x-axis.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.MoveBy(System.Int32,System.Int32,System.TimeSpan)">
+            <summary>
+            Moves the mouse by a given delta from the current position.
+            </summary>
+            <param name="deltaX">The delta for the x-axis.</param>
+            <param name="deltaY">The delta for the y-axis.</param>
+            <param name="duration">The time to interpolate the move.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.MoveBy(System.Windows.Vector,System.Double)">
+            <summary>
+            Moves the mouse by a given delta from the current position.
+            </summary>
+            <param name="delta">The delta for the x-axis.</param>
+            <param name="speed">The speed in pixels per second.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.MoveBy(System.Windows.Vector,System.TimeSpan)">
+            <summary>
+            Moves the mouse by a given delta from the current position.
+            </summary>
+            <param name="delta">The delta for the x-axis.</param>
+            <param name="duration">The time to interpolate the move.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.MoveTo(System.Int32,System.Int32)">
+            <summary>
+            Moves the mouse to a new position.
+            </summary>
+            <param name="newX">The new position on the x-axis.</param>
+            <param name="newY">The new position on the y-axis.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.MoveTo(System.Windows.Point)">
+            <summary>
+            Moves the mouse to a new position.
+            </summary>
+            <param name="newPosition">The new position for the mouse.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.MoveTo(System.Windows.Point,System.Double)">
+            <summary>
+            Moves the mouse to a new position.
+            </summary>
+            <param name="newPosition">The new position for the mouse.</param>
+            <param name="speed">The speed in pixels per second.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.MoveTo(System.Windows.Point,System.TimeSpan)">
+            <summary>
+            Moves the mouse by a given delta from the current position.
+            </summary>
+            <param name="newPosition">The delta for the x-axis.</param>
+            <param name="duration">The time to interpolate the move.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.Click(Gu.Wpf.UiAutomation.MouseButton)">
+            <summary>
+            Clicks the specified mouse button at the current location.
+            </summary>
+            <param name="mouseButton">The mouse button to click.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.Click(Gu.Wpf.UiAutomation.MouseButton,System.Windows.Point)">
+            <summary>
+            Moves to a specific position and clicks the specified mouse button.
+            </summary>
+            <param name="mouseButton">The mouse button to click.</param>
+            <param name="point">The position to move to before clicking.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.DoubleClick(Gu.Wpf.UiAutomation.MouseButton)">
+            <summary>
+            Double-clicks the specified mouse button at the current location.
+            </summary>
+            <param name="mouseButton">The mouse button to double-click.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.DoubleClick(Gu.Wpf.UiAutomation.MouseButton,System.Windows.Point)">
+            <summary>
+            Moves to a specific position and double-clicks the specified mouse button.
+            </summary>
+            <param name="mouseButton">The mouse button to double-click.</param>
+            <param name="point">The position to move to before double-clicking.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.Down(Gu.Wpf.UiAutomation.MouseButton)">
+            <summary>
+            Sends a mouse down command for the specified mouse button.
+            Avoid calling this method as things get weird if Up is not called.
+            Prefer using(Hold())  for drag operations.
+            </summary>
+            <param name="mouseButton">The mouse button to press.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.Up(Gu.Wpf.UiAutomation.MouseButton)">
+            <summary>
+            Sends a mouse up command for the specified mouse button.
+            </summary>
+            <param name="mouseButton">The mouse button to release.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.Hold(Gu.Wpf.UiAutomation.MouseButton)">
+            <summary>
+            Hold the mouse button pressed for example during a drag operation.
+            </summary>
+            <param name="mouseButton">The <see cref="T:Gu.Wpf.UiAutomation.MouseButton"/>.</param>
+            <returns>A <see cref="T:System.IDisposable"/> that releases the kay on dispose.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.Scroll(System.Double)">
+            <summary>
+            Simulates scrolling of the mouse wheel up or down.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.HorizontalScroll(System.Double)">
+            <summary>
+            Simulates scrolling of the horizontal mouse wheel left or right.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.DragHorizontally(Gu.Wpf.UiAutomation.MouseButton,System.Windows.Point,System.Double)">
+            <summary>
+            Drags the mouse horizontally in one step.
+            </summary>
+            <param name="mouseButton">The mouse button to use for dragging.</param>
+            <param name="startingPoint">Starting point of the drag.</param>
+            <param name="distance">The distance to drag, + for right, - for left.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.DragVertically(Gu.Wpf.UiAutomation.MouseButton,System.Windows.Point,System.Double)">
+            <summary>
+            Drags the mouse vertically in one step.
+            </summary>
+            <param name="mouseButton">The mouse button to use for dragging.</param>
+            <param name="startingPoint">Starting point of the drag.</param>
+            <param name="distance">The distance to drag, + for down, - for up.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.Drag(Gu.Wpf.UiAutomation.MouseButton,System.Windows.Point,System.Windows.Point)">
+            <summary>
+            Drags the mouse in one step.
+            </summary>
+            <param name="mouseButton">The mouse button to use for dragging.</param>
+            <param name="from">Start point of the drag.</param>
+            <param name="to">End point for the drga.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.Drag(Gu.Wpf.UiAutomation.MouseButton,System.Windows.Point,System.Windows.Point,System.Double)">
+            <summary>
+            Drags the mouse in one step.
+            </summary>
+            <param name="mouseButton">The mouse button to use for dragging.</param>
+            <param name="from">Start point of the drag.</param>
+            <param name="to">End point for the drga.</param>
+            <param name="speed">The speed in pixels per second.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.Drag(Gu.Wpf.UiAutomation.MouseButton,System.Windows.Point,System.Windows.Point,System.TimeSpan)">
+            <summary>
+            Drags the mouse in one step.
+            </summary>
+            <param name="mouseButton">The mouse button to use for dragging.</param>
+            <param name="from">Start point of the drag.</param>
+            <param name="to">End point for the drga.</param>
+            <param name="duration">The time to perform the drag.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.Restore">
+            <summary>
+            Restore the mouse cursor.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.GetCursorState">
+            <summary>
+            Get <see cref="T:Gu.Wpf.UiAutomation.WindowsAPI.CursorState"/>.
+            </summary>
+            <returns>The <see cref="T:Gu.Wpf.UiAutomation.WindowsAPI.CursorState"/>.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.SendInput(Gu.Wpf.UiAutomation.WindowsAPI.MOUSEINPUT)">
+            <summary>
+            Send raw input.
+            </summary>
+            <param name="mouseInput">The <see cref="T:Gu.Wpf.UiAutomation.WindowsAPI.MOUSEINPUT"/>.</param>
+            <throws><see cref="T:System.ComponentModel.Win32Exception"/>.</throws>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Mouse.SwapButtonIfNeeded(Gu.Wpf.UiAutomation.MouseButton)">
+            <summary>
+            Swaps the left/right button if <see cref="P:Gu.Wpf.UiAutomation.Mouse.AreButtonsSwapped" /> is set.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.Mouse.PressedButton">
+            <summary>Disposable class which presses the button on creation and releases it on dispose.</summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.MouseButton.Left">
+            <summary>
+            The left mouse button
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.MouseButton.Middle">
+            <summary>
+            The middle mouse button
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.MouseButton.Right">
+            <summary>
+            The right mouse button
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.MouseButton.XButton1">
+            <summary>
+            The fourth mouse button
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.MouseButton.XButton2">
+            <summary>
+            The fifth mouse button
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.Touch">
+            <summary>
+            For simulating touch input.
+            https://docs.microsoft.com/en-us/windows/desktop/api/_input_touchinjection/
+            https://docs.microsoft.com/en-us/windows/desktop/api/winuser/ns-winuser-tagpointer_touch_info
+            https://social.technet.microsoft.com/wiki/contents/articles/6460.simulating-touch-input-in-windows-8-using-touch-injection-api.aspx.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Touch.MoveSpeed">
+            <summary>
+            The speed the mouse is moved when for example dragging.
+            Pixels per second.
+            Default value is 2000.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Touch.Initialize">
+            <summary>
+            Initialize touch injection. Can be called many times.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Touch.Tap(System.Windows.Point)">
+            <summary>
+            Simulate tap.
+            </summary>
+            <param name="point">The position.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Touch.Hold(System.Windows.Point)">
+            <summary>
+            Simulate touch down.
+            </summary>
+            <param name="point">The position.</param>
+            <returns>A disposable that calls Up when disposed.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Touch.Hold(Gu.Wpf.UiAutomation.TwoFingers)">
+            <summary>
+            Simulate touch down.
+            </summary>
+            <param name="fingers">The position.</param>
+            <returns>A disposable that calls Up when disposed.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Touch.Up">
+            <summary>
+            Simulate touch up.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Touch.DragTo(System.Windows.Point)">
+            <summary>
+            Simulate touch drag.
+            Call <see cref="M:Gu.Wpf.UiAutomation.Touch.Hold(System.Windows.Point)"/> before calling this method.
+            This method is useful when dragging to multiple positions.
+            </summary>
+            <param name="position">The position.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Touch.Drag(System.Windows.Point,System.Windows.Point)">
+            <summary>
+            Simulate touch drag.
+            </summary>
+            <param name="from">The start position.</param>
+            <param name="to">The end position.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Touch.Drag(System.Windows.Point,System.Windows.Point,System.Double)">
+            <summary>
+            Simulate touch drag.
+            </summary>
+            <param name="from">The start position.</param>
+            <param name="to">The end position.</param>
+            <param name="speed">The speed for the drag pixels per second.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Touch.Drag(System.Windows.Point,System.Windows.Point,System.TimeSpan)">
+            <summary>
+            Simulate touch drag.
+            </summary>
+            <param name="from">The start position.</param>
+            <param name="to">The end position.</param>
+            <param name="duration">The time to drag.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Touch.Multi(Gu.Wpf.UiAutomation.TwoFingers,Gu.Wpf.UiAutomation.TwoFingers,System.TimeSpan)">
+            <summary>
+            Simulate touch pinch etc.
+            </summary>
+            <param name="from">The start position.</param>
+            <param name="to">The end position.</param>
+            <param name="duration">The time to drag.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Touch.Pinch(System.Windows.Point,System.Double,System.Double,System.TimeSpan,System.Double)">
+            <summary>
+            Pinch around <paramref name="around"/>.
+            </summary>
+            <param name="around">The center point of the pinch.</param>
+            <param name="startRadius">The start radius.</param>
+            <param name="endRadius">The end radius.</param>
+            <param name="duration">The duration.</param>
+            <param name="angle">The angle to the x axis.</param>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Touch.InjectTouchInput(Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO[])">
+            <summary>
+            Send raw input.
+            </summary>
+            <param name="contacts">The <see cref="T:POINTER_TOUCH_INFO[]"/>.</param>
+            <throws><see cref="T:System.ComponentModel.Win32Exception"/>.</throws>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.TwoFingers">
+            <summary>
+            The position of two fingers when used in touch.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.TwoFingers.#ctor(System.Windows.Point,System.Windows.Point)">
+            <summary>
+            Creates an instance of the <see cref="T:Gu.Wpf.UiAutomation.TwoFingers"/> struct.
+            </summary>
+            <param name="first">The position of the first finger.</param>
+            <param name="second">The second of the first finger.</param>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.TwoFingers.First">
+            <summary>
+            The position of the first finger.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.TwoFingers.Second">
+            <summary>
+            The second of the first finger.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.TwoFingers.Around(System.Windows.Point,System.Double,System.Double)">
+            <summary>
+            Create an instance of <see cref="T:Gu.Wpf.UiAutomation.TwoFingers"/>.
+            </summary>
+            <param name="around">The center point.</param>
+            <param name="radius">The radius.</param>
+            <param name="angle">The angle to the x axis.</param>
+            <returns>An instance of <see cref="T:Gu.Wpf.UiAutomation.TwoFingers"/>.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.TwoFingers.Equals(Gu.Wpf.UiAutomation.TwoFingers)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.TwoFingers.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.TwoFingers.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.Wait">
+            <summary>
+            Class with various helper tools used in various places.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Wait.UntilInputIsProcessed">
+            <summary>
+            Waits 100 ms for a generic time which was found to be sufficient to allow
+            input (mouse, keyboard, ...) do be processed.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Wait.UntilInputIsProcessed(System.TimeSpan)">
+            <summary>
+            Waits for a generic time which was found to be sufficient to allow
+            input (mouse, keyboard, ...) do be processed.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Wait.UntilResponsive(System.IntPtr,System.TimeSpan)">
+            <summary>
+            Waits until a window is responsive by sending a WM_NULL message.
+            See: https://blogs.msdn.microsoft.com/oldnewthing/20161118-00/?p=94745.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.ConsoleLogger.GatedDebug(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.ConsoleLogger.GatedError(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.ConsoleLogger.GatedFatal(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.ConsoleLogger.GatedInfo(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.ConsoleLogger.GatedTrace(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.ConsoleLogger.GatedWarn(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.DebugLogger.GatedDebug(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.DebugLogger.GatedError(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.DebugLogger.GatedFatal(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.DebugLogger.GatedInfo(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.DebugLogger.GatedTrace(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.DebugLogger.GatedWarn(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.Logging.ILogger">
+            <summary>
+            Not sure if we want to keep the logging stuff.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Logging.LoggerBase.IsTraceEnabled">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Logging.LoggerBase.IsDebugEnabled">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Logging.LoggerBase.IsInfoEnabled">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Logging.LoggerBase.IsWarnEnabled">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Logging.LoggerBase.IsErrorEnabled">
+            <inheritdoc/>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Logging.LoggerBase.IsFatalEnabled">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.LoggerBase.Log(Gu.Wpf.UiAutomation.Logging.LogLevel,System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.LoggerBase.Log(Gu.Wpf.UiAutomation.Logging.LogLevel,System.String,System.Exception,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.LoggerBase.Trace(System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.LoggerBase.Trace(System.String,System.Exception,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.LoggerBase.Debug(System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.LoggerBase.Debug(System.String,System.Exception,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.LoggerBase.Info(System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.LoggerBase.Info(System.String,System.Exception,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.LoggerBase.Warn(System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.LoggerBase.Warn(System.String,System.Exception,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.LoggerBase.Error(System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.LoggerBase.Error(System.String,System.Exception,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.LoggerBase.Fatal(System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.LoggerBase.Fatal(System.String,System.Exception,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.NullLogger.GatedTrace(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.NullLogger.GatedDebug(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.NullLogger.GatedInfo(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.NullLogger.GatedWarn(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.NullLogger.GatedError(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.NullLogger.GatedFatal(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.TraceLogger.GatedDebug(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.TraceLogger.GatedError(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.TraceLogger.GatedFatal(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.TraceLogger.GatedInfo(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.TraceLogger.GatedTrace(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Logging.TraceLogger.GatedWarn(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.OnDispose.KillProcess">
+            <summary>
+            Kill the process when the <see cref="T:Gu.Wpf.UiAutomation.Application"/> is disposed.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.OnDispose.LeaveOpen">
+            <summary>
+            Leave the process running when the <see cref="T:Gu.Wpf.UiAutomation.Application"/> is disposed.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.OnFail.DoNothing">
+            <summary>
+            This is the default meaning just an assert exception is thrown if images are not equal.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.OnFail.SaveImageToTemp">
+            <summary>
+            Saves the actual image to %TEMP%/filename
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Overlay.OverlayRectangleWindow.OnSourceInitialized(System.EventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.Subscribe.ToPropertyChangedEvent(System.Windows.Automation.AutomationElement,System.Windows.Automation.TreeScope,System.Windows.Automation.AutomationProperty,System.Windows.Automation.AutomationPropertyChangedEventHandler)">
+            <summary>
+            Subscribe to value changes.
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.Automation.AutomationElement"/>.</param>
+            <param name="treeScope">The <see cref="T:System.Windows.Automation.TreeScope"/>.</param>
+            <param name="property">The <see cref="T:System.Windows.Automation.AutomationProperty"/> to subscribe to changes for.</param>
+            <param name="handler"> The <see cref="T:System.Windows.Automation.AutomationPropertyChangedEventHandler"/>. </param>
+            <returns>A <see cref="T:System.IDisposable"/> that unsubcribes on dispose.</returns>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.ItemRealizer">
+            <summary>
+            Helper class which tries to load all items for an item container.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Retry.Time">
+            <summary>
+            The time to retry when searching for elements. Default is one second.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.UiAutomation.Retry.PollInterval">
+            <summary>
+            The poll interval, default 100 ms.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.WindowsVersion">
+            <summary>
+            Provides methods for determining current windows version.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsVersion.IsAppVeyor">
+            <summary>
+            Returns true if running on AppVeyor.
+            Checks if environment variable APPVEYOR is defined.
+            </summary>
+            <returns>True if on AppVeyor.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsVersion.IsWindows7">
+            <summary>
+            Check if the installed operating system is Windows 7.
+            </summary>
+            <returns>True if Windows 7.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsVersion.IsWindows8">
+            <summary>
+            Check if the installed operating system is Windows 8.
+            </summary>
+            <returns>True if Windows 8.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsVersion.IsWindows8_1">
+            <summary>
+            Check if the installed operating system is Windows 8.1.
+            </summary>
+            <returns>True if Windows 8.1.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsVersion.IsWindows10">
+            <summary>
+            Check if the installed operating system is Windows 10.
+            </summary>
+            <returns>True if Windows 10.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsVersion.IsWindowsServer2016">
+            <summary>
+            Check if the installed operating system is Windows Server 2016.
+            </summary>
+            <returns>True if Windows Server 2016.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.COLORREF.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.COLORREF.Equals(Gu.Wpf.UiAutomation.WindowsAPI.COLORREF)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.COLORREF.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.COLORREF.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.CURSORINFO.Size">
+            <summary>
+            Specifies the size, in bytes, of the structure.
+            The caller must set this to Marshal.SizeOf(typeof(CURSORINFO)).
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.CURSORINFO.Flags">
+            <summary>
+            Specifies the cursor state.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.CURSORINFO.Cursor">
+            <summary>
+            A handle to the cursor.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.CURSORINFO.ScreenPos">
+            <summary>
+            A structure that receives the screen coordinates of the cursor.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.CURSORINFO.Equals(Gu.Wpf.UiAutomation.WindowsAPI.CURSORINFO)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.CURSORINFO.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.CURSORINFO.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.WindowsAPI.CursorState">
+            <summary>
+            Returned from GetCursorInfo
+            https://docs.microsoft.com/en-us/windows/desktop/api/winuser/ns-winuser-tagcursorinfo.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.CursorState.NOMOUSE">
+            <summary>
+            No mouse installed.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.CursorState.HIDDEN">
+            <summary>
+            The cursor is hidden.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.CursorState.CURSOR_SHOWING">
+            <summary>
+            The cursor is showing.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.CursorState.CURSOR_SUPPRESSED">
+            <summary>
+            Windows 8: The cursor is suppressed. This flag indicates that the system is not drawing the cursor because the user is providing input through touch or pen instead of the mouse.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.HARDWAREINPUT.Equals(Gu.Wpf.UiAutomation.WindowsAPI.HARDWAREINPUT)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.HARDWAREINPUT.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.HARDWAREINPUT.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.INPUT.Equals(Gu.Wpf.UiAutomation.WindowsAPI.INPUT)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.INPUT.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.INPUT.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.INPUTUNION.Equals(Gu.Wpf.UiAutomation.WindowsAPI.INPUTUNION)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.INPUTUNION.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.INPUTUNION.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.KEYBDINPUT.Equals(Gu.Wpf.UiAutomation.WindowsAPI.KEYBDINPUT)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.KEYBDINPUT.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.KEYBDINPUT.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.MouseEventFlags.MOUSEEVENTF_MOVE">
+            <summary>
+            Movement occurred.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.MouseEventFlags.MOUSEEVENTF_LEFTDOWN">
+            <summary>
+            The left button is down.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.MouseEventFlags.MOUSEEVENTF_LEFTUP">
+            <summary>
+            The left button is up.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.MouseEventFlags.MOUSEEVENTF_RIGHTDOWN">
+            <summary>
+            The right button is down.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.MouseEventFlags.MOUSEEVENTF_RIGHTUP">
+            <summary>
+            The right button is up.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.MouseEventFlags.MOUSEEVENTF_MIDDLEDOWN">
+            <summary>
+            The middle button is down.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.MouseEventFlags.MOUSEEVENTF_MIDDLEUP">
+            <summary>
+            The middle button is up.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.MouseEventFlags.MOUSEEVENTF_XDOWN">
+            <summary>
+            An X button was pressed. Set which button in data.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.MouseEventFlags.MOUSEEVENTF_XUP">
+            <summary>
+            An X button was released. Set which button in data.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.MouseEventFlags.MOUSEEVENTF_WHEEL">
+            <summary>
+            The wheel has been moved, if the mouse has a wheel. The amount of movement is specified in dwData
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.MouseEventFlags.MOUSEEVENTF_HWHEEL">
+            <summary>
+            The wheel button is tilted. >= Win Vista only
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.MouseEventFlags.MOUSEEVENTF_ABSOLUTE">
+            <summary>
+            The dx and dy parameters contain normalized absolute coordinates.
+            If not set, those parameters contain relative data: the change in position since the last reported position.
+            This flag can be set, or not set, regardless of what kind of mouse or mouse-like device, if any, is connected to the system.
+            For further information about relative mouse motion, see the following Remarks section.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.WindowsAPI.MOUSEINPUT">
+            <summary>
+            If the mouse has moved, indicated by MOUSEEVENTF_MOVE, dxand dy specify information about that movement. The information is specified as absolute or relative integer values.
+            If MOUSEEVENTF_ABSOLUTE value is specified, dx and dy contain normalized absolute coordinates between 0 and 65,535. The event procedure maps these coordinates onto the display surface.Coordinate(0,0) maps onto the upper-left corner of the display surface; coordinate(65535,65535) maps onto the lower-right corner.In a multimonitor system, the coordinates map to the primary monitor.
+            If MOUSEEVENTF_VIRTUALDESK is specified, the coordinates map to the entire virtual desktop.
+            If the MOUSEEVENTF_ABSOLUTE value is not specified, dxand dy specify movement relative to the previous mouse event (the last reported position). Positive values mean the mouse moved right(or down); negative values mean the mouse moved left(or up).
+            Relative mouse motion is subject to the effects of the mouse speed and the two-mouse threshold values.A user sets these three values with the Pointer Speed slider of the Control Panel's Mouse Properties sheet. You can obtain and set these values using the SystemParametersInfo function.
+            The system applies two tests to the specified relative mouse movement.If the specified distance along either the x or y axis is greater than the first mouse threshold value, and the mouse speed is not zero, the system doubles the distance.If the specified distance along either the x or y axis is greater than the second mouse threshold value, and the mouse speed is equal to two, the system doubles the distance that resulted from applying the first threshold test.It is thus possible for the system to multiply specified relative mouse movement along the x or y axis by up to four times.
+            https://docs.microsoft.com/en-us/windows/desktop/api/winuser/ns-winuser-tagmouseinput.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.MOUSEINPUT.dx">
+            <summary>
+            The absolute position of the mouse, or the amount of motion since the last mouse event was generated, depending on the value of the dwFlags member.
+            Absolute data is specified as the x coordinate of the mouse; relative data is specified as the number of pixels moved.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.MOUSEINPUT.dy">
+            <summary>
+            The absolute position of the mouse, or the amount of motion since the last mouse event was generated, depending on the value of the dwFlags member.
+            Absolute data is specified as the y coordinate of the mouse; relative data is specified as the number of pixels moved.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.MOUSEINPUT.mouseData">
+            <summary>
+            If dwFlags contains MOUSEEVENTF_WHEEL, then mouseData specifies the amount of wheel movement. A positive value indicates that the wheel was rotated forward, away from the user; a negative value indicates that the wheel was rotated backward, toward the user.
+            One wheel click is defined as WHEEL_DELTA, which is 120.
+            Windows Vista: If dwFlags contains MOUSEEVENTF_HWHEEL, then dwData specifies the amount of wheel movement.A positive value indicates that the wheel was rotated to the right; a negative value indicates that the wheel was rotated to the left.
+            One wheel click is defined as WHEEL_DELTA, which is 120.
+            If dwFlags does not contain MOUSEEVENTF_WHEEL, MOUSEEVENTF_XDOWN, or MOUSEEVENTF_XUP, then mouseData should be zero.
+            If dwFlags contains MOUSEEVENTF_XDOWN or MOUSEEVENTF_XUP, then mouseData specifies which X buttons were pressed or released. This value may be any combination of the following flags.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.MOUSEINPUT.dwFlags">
+            <summary>
+            A set of bit flags that specify various aspects of mouse motion and button clicks. The bits in this member can be any reasonable combination of the following values.
+            The bit flags that specify mouse button status are set to indicate changes in status, not ongoing conditions.
+            For example, if the left mouse button is pressed and held down, MOUSEEVENTF_LEFTDOWN is set when the left button is first pressed, but not for subsequent motions.Similarly, MOUSEEVENTF_LEFTUP is set only when the button is first released.
+            You cannot specify both the MOUSEEVENTF_WHEEL flag and either MOUSEEVENTF_XDOWN or MOUSEEVENTF_XUP flags simultaneously in the dwFlags parameter, because they both require use of the mouseData field.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.MOUSEINPUT.time">
+            <summary>
+            The time stamp for the event, in milliseconds. If this parameter is 0, the system will provide its own time stamp.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.MOUSEINPUT.dwExtraInfo">
+            <summary>
+            An additional value associated with the mouse event. An application calls GetMessageExtraInfo to obtain this extra information.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.MOUSEINPUT.Equals(Gu.Wpf.UiAutomation.WindowsAPI.MOUSEINPUT)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.MOUSEINPUT.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.MOUSEINPUT.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.POINT.Equals(Gu.Wpf.UiAutomation.WindowsAPI.POINT)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.POINT.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.POINT.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_BUTTON_CHANGE_TYPE">
+            <summary>
+            Identifies a change in the state of a button associated with a pointer.
+            https://docs.microsoft.com/en-us/windows/desktop/api/winuser/ne-winuser-tagpointer_button_change_type.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_BUTTON_CHANGE_TYPE.NONE">
+            <summary>
+            No change in button state.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_BUTTON_CHANGE_TYPE.FIRSTBUTTON_DOWN">
+            <summary>
+            The first button (see POINTER_FLAG_FIRSTBUTTON) transitioned to a pressed state.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_BUTTON_CHANGE_TYPE.FIRSTBUTTON_UP">
+            <summary>
+            The first button (see POINTER_FLAG_FIRSTBUTTON) transitioned to a released state.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_BUTTON_CHANGE_TYPE.SECONDBUTTON_DOWN">
+            <summary>
+            The second button (see POINTER_FLAG_SECONDBUTTON) transitioned to a pressed state.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_BUTTON_CHANGE_TYPE.SECONDBUTTON_UP">
+            <summary>
+            The second button (see POINTER_FLAG_SECONDBUTTON) transitioned to a released state.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_BUTTON_CHANGE_TYPE.THIRDBUTTON_DOWN">
+            <summary>
+            The third button (see POINTER_FLAG_THIRDBUTTON) transitioned to a pressed state.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_BUTTON_CHANGE_TYPE.THIRDBUTTON_UP">
+            <summary>
+            The third button (see POINTER_FLAG_THIRDBUTTON) transitioned to a released state.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_BUTTON_CHANGE_TYPE.FOURTHBUTTON_DOWN">
+            <summary>
+            The fourth button (see POINTER_FLAG_FOURTHBUTTON) transitioned to a pressed state.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_BUTTON_CHANGE_TYPE.FOURTHBUTTON_UP">
+            <summary>
+            The fourth button (see POINTER_FLAG_FOURTHBUTTON) transitioned to a released state.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_BUTTON_CHANGE_TYPE.FIFTHBUTTON_DOWN">
+            <summary>
+            The fifth button (see POINTER_FLAG_FIFTHBUTTON) transitioned to a pressed state.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_BUTTON_CHANGE_TYPE.FIFTHBUTTON_UP">
+            <summary>
+            The fifth button (see POINTER_FLAG_FIFTHBUTTON) transitioned to a released state.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG">
+            <summary>
+            Values that can appear in the pointerFlags field of the POINTER_INFO structure.
+            https://docs.microsoft.com/en-us/previous-versions/windows/desktop/inputmsg/pointer-flags-contants.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.NONE">
+            <summary>
+            Default
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.NEW">
+            <summary>
+            Indicates the arrival of a new pointer.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.INRANGE">
+            <summary>
+            Indicates that this pointer continues to exist. When this flag is not set, it indicates the pointer has left detection range.
+            This flag is typically not set only when a hovering pointer leaves detection range (POINTER_FLAG_UPDATE is set) or when a pointer in contact with a window surface leaves detection range(POINTER_FLAG_UP is set).
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.INCONTACT">
+            <summary>
+            Indicates that this pointer is in contact with the digitizer surface. When this flag is not set, it indicates a hovering pointer.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.FIRSTBUTTON">
+            <summary>
+            Indicates a primary action, analogous to a left mouse button down.
+            A touch pointer has this flag set when it is in contact with the digitizer surface.
+            A pen pointer has this flag set when it is in contact with the digitizer surface with no buttons pressed.
+            A mouse pointer has this flag set when the left mouse button is down.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.SECONDBUTTON">
+            <summary>
+            Indicates a secondary action, analogous to a right mouse button down.
+            A touch pointer does not use this flag.
+            A pen pointer has this flag set when it is in contact with the digitizer surface with the pen barrel button pressed.
+            A mouse pointer has this flag set when the right mouse button is down.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.THIRDBUTTON">
+            <summary>
+            Analogous to a mouse wheel button down.
+            A touch pointer does not use this flag.
+            A pen pointer does not use this flag.
+            A mouse pointer has this flag set when the mouse wheel button is down.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.FOURTHBUTTON">
+            <summary>
+            Analogous to a first extended mouse (XButton1) button down.
+            A touch pointer does not use this flag.
+            A pen pointer does not use this flag.
+            A mouse pointer has this flag set when the first extended mouse(XBUTTON1) button is down.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.FIFTHBUTTON">
+            <summary>
+            Analogous to a first extended mouse (XButton2) button down.
+            A touch pointer does not use this flag.
+            A pen pointer does not use this flag.
+            A mouse pointer has this flag set when the first extended mouse(XBUTTON2) button is down.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.PRIMARY">
+            <summary>
+            Indicates that this pointer has been designated as the primary pointer. A primary pointer is a single pointer that can perform actions beyond those available to non-primary pointers.
+            For example, when a primary pointer makes contact with a window s surface, it may provide the window an opportunity to activate by sending it a WM_POINTERACTIVATE message.
+            The primary pointer is identified from all current user interactions on the system (mouse, touch, pen, and so on).
+            As such, the primary pointer might not be associated with your app.The first contact in a multi-touch interaction is set as the primary pointer.Once a primary pointer is identified, all contacts must be lifted before a new contact can be identified as a primary pointer.For apps that don't process pointer input, only the primary pointer's events are promoted to mouse events.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.CONFIDENCE">
+            <summary>
+            Confidence is a suggestion from the source device about whether the pointer represents an intended or accidental interaction, which is especially relevant for PT_TOUCH pointers where an accidental interaction (such as with the palm of the hand) can trigger input. The presence of this flag indicates that the source device has high confidence that this input is part of an intended interaction.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.CANCELLED">
+            <summary>
+            Indicates that the pointer is departing in an abnormal manner, such as when the system receives invalid input for the pointer or when a device with active pointers departs abruptly.
+            If the application receiving the input is in a position to do so, it should treat the interaction as not completed and reverse any effects of the concerned pointer.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.DOWN">
+            <summary>
+            Indicates that this pointer transitioned to a down state; that is, it made contact with the digitizer surface.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.UPDATE">
+            <summary>
+            Indicates that this is a simple update that does not include pointer state changes.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.UP">
+            <summary>
+            Indicates that this pointer transitioned to an up state; that is, contact with the digitizer surface ended.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.WHEEL">
+            <summary>
+            Indicates input associated with a pointer wheel. For mouse pointers, this is equivalent to the action of the mouse scroll wheel (WM_MOUSEHWHEEL).
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.HWHEEL">
+            <summary>
+            Indicates input associated with a pointer h-wheel. For mouse pointers, this is equivalent to the action of the mouse horizontal scroll wheel (WM_MOUSEHWHEEL).
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.CAPTURECHANGED">
+            <summary>
+            Indicates that this pointer was captured by (associated with) another element and the original element has lost capture (see WM_POINTERCAPTURECHANGED).
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG.HASTRANSFORM">
+            <summary>
+            Indicates that this pointer has an associated transform.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO">
+            <summary>
+            https://docs.microsoft.com/en-us/windows/desktop/api/winuser/ns-winuser-tagpointer_info.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO.PointerType">
+            <summary>
+            A value from the <see cref="T:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INPUT_TYPE"/> enumeration that specifies the pointer type.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO.PointerId">
+            <summary>
+            An identifier that uniquely identifies a pointer during its lifetime.
+            A pointer comes into existence when it is first detected and ends its existence when it goes out of detection range.
+            Note that if a physical entity (finger or pen) goes out of detection range and then returns to be detected again, it is treated as a new pointer and may be assigned a new pointer identifier.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO.FrameId">
+            <summary>
+            An identifier common to multiple pointers for which the source device reported an update in a single input frame.
+            For example, a parallel-mode multi-touch digitizer may report the positions of multiple touch contacts in a single update to the system.
+            <remarks>
+            Note that frame identifier is assigned as input is reported to the system for all pointers across all devices.
+            Therefore, this field may not contain strictly sequential values in a single series of messages that a window receives.
+            However, this field will contain the same numerical value for all input updates that were reported in the same input frame by a single device.
+            </remarks>
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO.PointerFlags">
+            <summary>
+            May be any reasonable combination of flags from the <see cref="T:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG"/> constants.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO.SourceDevice">
+            <summary>
+            Handle to the source device that can be used in calls to the raw input device API and the digitizer device API.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO.HwndTarget">
+            <summary>
+            Window to which this message was targeted.
+            If the pointer is captured, either implicitly by virtue of having made contact over this window or explicitly using the pointer capture API, this is the capture window.
+            If the pointer is uncaptured, this is the window over which the pointer was when this message was generated.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO.PtPixelLocation">
+            <summary>
+            The predicted screen coordinates of the pointer, in pixels.
+            The predicted value is based on the pointer position reported by the digitizer and the motion of the pointer.
+            This correction can compensate for visual lag due to inherent delays in sensing and processing the pointer location on the digitizer.This is applicable to pointers of type PT_TOUCH.
+            For other pointer types, the predicted value will be the same as the non-predicted value (see ptPixelLocationRaw).
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO.PtPixelLocationRaw">
+            <summary>
+            The predicted screen coordinates of the pointer, in HIMETRIC units.
+            The predicted value is based on the pointer position reported by the digitizer and the motion of the pointer.
+            This correction can compensate for visual lag due to inherent delays in sensing and processing the pointer location on the digitizer.
+            This is applicable to pointers of type PT_TOUCH.For other pointer types, the predicted value will be the same as the non-predicted value (see ptHimetricLocationRaw).
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO.PtHimetricLocation">
+            <summary>
+            The screen coordinates of the pointer, in pixels. For adjusted screen coordinates, see ptPixelLocation.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO.PtHimetricLocationRaw">
+            <summary>
+            The screen coordinates of the pointer, in HIMETRIC units. For adjusted screen coordinates, see ptHimetricLocation.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO.DwTime">
+            <summary>
+            0 or the time stamp of the message, based on the system tick count when the message was received.
+            The application can specify the input time stamp in either dwTime or PerformanceCount.
+            The value cannot be more recent than the current tick count or QueryPerformanceCount (QPC) value of the injection thread. Once a frame is injected with a time stamp, all subsequent frames must include a timestamp until all contacts in the frame go to an UP state.The custom timestamp value must also be provided for the first element in the contacts array.The time stamp values after the first element are ignored. The custom timestamp value must increment in every injection frame.
+            When PerformanceCount is specified, the time stamp will be converted to the current time in .1 millisecond resolution upon actual injection.If a custom PerformanceCount resulted in the same .1 millisecond window from the previous injection, ERROR_NOT_READY is returned and injection will not occur. While injection will not be invalidated immediately by the error, the next successful injection must have a PerformanceCount value that is at least 0.1 millisecond from the previously successful injection. This is also true if dwTime is used.
+            If both dwTime and PerformanceCount are specified in InjectTouchInput, ERROR_INVALID_PARAMETER is returned.
+            InjectTouchInput cannot switch between dwTime and PerformanceCount once injection has started.
+            If neither dwTime and PerformanceCount are specified, InjectTouchInput allocates the timestamp based on the timing of the call.
+            If InjectTouchInput calls are repeatedly less than 0.1 millisecond apart, ERROR_NOT_READY might be returned.
+            The error will not invalidate the input immediately, but the injection application needs to retry the same frame again for injection to succeed.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO.HistoryCount">
+            <summary>
+            Count of inputs that were coalesced into this message.
+            This count matches the total count of entries that can be returned by a call to GetPointerInfoHistory.
+            If no coalescing occurred, this count is 1 for the single input represented by the message.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO.DwKeyStates">
+            <summary>
+            Indicates which keyboard modifier keys were pressed at the time the input was generated. May be zero or a combination of the following values.
+            POINTER_MOD_SHIFT – A SHIFT key was pressed.
+            POINTER_MOD_CTRL – A CTRL key was pressed.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO.PerformanceCount">
+            <summary>
+            The value of the high-resolution performance counter when the pointer message was received (high-precision, 64 bit alternative to dwTime).
+            The value can be calibrated when the touch digitizer hardware supports the scan timestamp information in its input report.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO.ButtonChangeType">
+            <summary>
+            A value from the POINTER_BUTTON_CHANGE_TYPE enumeration that specifies the change in button state between this input and the previous input.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO.Equals(Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INFO.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INPUT_TYPE">
+            <summary>
+            Identifies the pointer input types.
+            https://docs.microsoft.com/en-us/windows/desktop/api/winuser/ne-winuser-tagpointer_input_type.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INPUT_TYPE.PT_POINTER">
+            <summary>
+            Generic pointer type. This type never appears in pointer messages or pointer data. Some data query functions allow the caller to restrict the query to specific pointer type.
+            The PT_POINTER type can be used in these functions to specify that the query is to include pointers of all types
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INPUT_TYPE.PT_TOUCH">
+            <summary>
+            Touch pointer type.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INPUT_TYPE.PT_PEN">
+            <summary>
+            Pen pointer type.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INPUT_TYPE.PT_MOUSE">
+            <summary>
+            Mouse pointer type.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INPUT_TYPE.PT_TOUCHPAD">
+            <summary>
+            Touchpad pointer type (Windows 8.1 and later).
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO">
+            <summary>
+            https://docs.microsoft.com/en-us/windows/desktop/api/winuser/ns-winuser-tagpointer_touch_info.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO.PointerInfo">
+            <summary>
+            An embedded <see cref="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO.PointerInfo"/> header structure.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO.TouchFlags">
+            <summary>
+            Currently none.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO.TouchMasks">
+            <summary>
+            Indicates which of the optional fields contain valid values. The member can be zero or any combination of the values from the <see cref="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO.TouchMasks"/> constants.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO.Contact">
+            <summary>
+            The predicted screen coordinates of the contact area, in pixels. By default, if the device does not report a contact area, this field defaults to a 0-by-0 rectangle centered around the pointer location.
+            The predicted value is based on the pointer position reported by the digitizer and the motion of the pointer.
+            This correction can compensate for visual lag due to inherent delays in sensing and processing the pointer location on the digitizer.
+            This is applicable to pointers of type <see cref="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_INPUT_TYPE.PT_TOUCH"/>.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO.ContactAreaRaw">
+            <summary>
+            The raw screen coordinates of the contact area, in pixels. For adjusted screen coordinates, see rcContact.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO.Orientation">
+            <summary>
+            A pointer orientation, with a value between 0 and 359, where 0 indicates a touch pointer aligned with the x-axis and pointing from left to right; increasing values indicate degrees of rotation in the clockwise direction.
+            This field defaults to 0 if the device does not report orientation.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO.Pressure">
+            <summary>
+            A pen pressure normalized to a range between 0 and 1024. The default is 0 if the device does not report pressure.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO.Create(System.Windows.Point,Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG,System.UInt32)">
+            <summary>
+            Create a <see cref="T:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO"/> structure.
+            </summary>
+            <param name="point">The <see cref="T:System.Windows.Point"/>.</param>
+            <param name="flags">The <see cref="T:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_FLAG"/>.</param>
+            <param name="id">The id of the point, only needed when more than one.</param>
+            <returns>A <see cref="T:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO"/> structure.</returns>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO.Equals(Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.RECT.Equals(Gu.Wpf.UiAutomation.WindowsAPI.RECT)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.RECT.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.RECT.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.WindowsAPI.SafeCursorHandle">
+            <summary>
+            https://stackoverflow.com/a/16050600/1069200.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.UiAutomation.WindowsAPI.SafeCursorHandle.ReleaseHandle">
+            <inheritdoc />
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.WindowsAPI.ScanCodeShort">
+            <summary>
+            These are the hardware keyboard codes.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.SystemMetric.SM_CXSCREEN">
+            <summary>
+            The width of the screen of the primary display monitor, in pixels. This is the same value obtained by calling GetDeviceCaps as follows: GetDeviceCaps( hdcPrimaryMonitor, HORZRES)
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.SystemMetric.SM_CYSCREEN">
+            <summary>
+            The height of the screen of the primary display monitor, in pixels. This is the same value obtained by calling GetDeviceCaps as follows: GetDeviceCaps( hdcPrimaryMonitor, VERTRES)
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.SystemMetric.SM_SWAPBUTTON">
+            <summary>
+            Nonzero if the meanings of the left and right mouse buttons are swapped; otherwise, 0.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.SystemMetric.SM_CXDOUBLECLK">
+            <summary>
+            The width of the rectangle around the location of a first click in a double-click sequence, in pixels.
+            The second click must occur within the rectangle that is defined by SM_CXDOUBLECLK and SM_CYDOUBLECLK for the system to consider the two clicks a double-click. The two clicks must also occur within a specified time.
+            To set the width of the double-click rectangle, call SystemParametersInfo with SPI_SETDOUBLECLKWIDTH.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.SystemMetric.SM_CYDOUBLECLK">
+            <summary>
+            The height of the rectangle around the location of a first click in a double-click sequence, in pixels.
+            The second click must occur within the rectangle defined by SM_CXDOUBLECLK and SM_CYDOUBLECLK for the system to consider the two clicks a double-click. The two clicks must also occur within a specified time.
+            To set the height of the double-click rectangle, call SystemParametersInfo with SPI_SETDOUBLECLKHEIGHT.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.UiAutomation.WindowsAPI.TOUCH_FEEDBACK">
+            <summary>
+            https://docs.microsoft.com/en-us/previous-versions/windows/desktop/input_touchinjection/constants.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.TOUCH_FEEDBACK.DEFAULT">
+            <summary>
+            Specifies default touch visualizations.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.TOUCH_FEEDBACK.INDIRECT">
+            <summary>
+            Specifies indirect touch visualizations.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.TOUCH_FEEDBACK.NONE">
+            <summary>
+            Specifies no touch visualizations.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.TOUCH_MASK.NONE">
+            <summary>
+            Default. None of the optional fields are valid.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.TOUCH_MASK.CONTACTAREA">
+            <summary>
+            <see cref="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO.Contact"/> of the <see cref="T:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO"/> structure is valid.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.TOUCH_MASK.ORIENTATION">
+            <summary>
+            <see cref="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO.Orientation"/> of the <see cref="T:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO"/> structure is valid.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.UiAutomation.WindowsAPI.TOUCH_MASK.PRESSURE">
+            <summary>
+            <see cref="F:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO.Pressure"/> of the <see cref="T:Gu.Wpf.UiAutomation.WindowsAPI.POINTER_TOUCH_INFO"/> structure is valid.
+            </summary>
+        </member>
+    </members>
+</doc>
