@@ -237,5 +237,10 @@ namespace WebPageGrabber
             get_url = GetURLWEBPAGE();
             textBox1.Text = get_url;
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
